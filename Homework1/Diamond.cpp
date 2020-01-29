@@ -16,7 +16,15 @@ void main()
 			cout << "The number cannot be 0.\n" << endl;
 		else
 			break;
+	}
+
+	int row = 0;
+	for (int i=1; i <= n; i++)
+	{	
 		
+		cout << i + row << endl;
+		row++;
+
 	}
 
 
