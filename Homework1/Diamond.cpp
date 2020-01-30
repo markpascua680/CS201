@@ -24,8 +24,14 @@ void main()
 
 	for (int i = 1; i <= n; i++) // Creates the rows of the diamond up to the width
 	{
-		
-		for (pound = pound; pound >= 0; pound--)
+		int space = n - i; // Indicates how many spaces to output
+
+		for (space = space; space >= 0; space--) // Prints the spaces for the top half of diamond
+		{
+			cout << " ";
+		}
+
+		for (pound = pound; pound >= 0; pound--) // Printsthe #'s up to the middle of diamond
 		{
 			cout << "#";
 		}
@@ -41,15 +47,20 @@ void main()
 
 			for (int i=n-1; i > 0; i--) // Creates the rows after the diamond's width
 			{
-				
+				int space = n - i;
+
 				pound = i + row;
-				for (pound = pound; pound > 0; pound--)
+
+				for (space = space; space >= 0; space--) //Prints the spaces for the bottom half of diamond
+				{
+					cout << " ";
+				}
+				for (pound = pound; pound > 0; pound--) // Prints the #'s for the bottom half of diamond
 				{
 					cout << "#";
 				}
 				cout << endl;
 				row--;
-
 
 			}
 		}
