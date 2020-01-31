@@ -1,9 +1,9 @@
-// Diamond.cpp
-// Jay-Mark Pascua
-// CS 201
-// 01/27/2020
-// Outputs a diamond based on user input
-
+/* Diamond.cpp
+   Jay-Mark Pascua
+   CS 201
+   01/27/2020
+   Outputs a diamond based on user input
+*/
 
 #include <iostream>
 using std::cout;
@@ -18,20 +18,25 @@ int main()
 	{
 		cout << "Enter a positive number: ";
 		cin >> n;
-		/*if (!cin)
+		/*
+		if (!n)
 		{
 			cout << "That is not a number.\n" << endl;
+			continue;
 		}
-		*/if (n < 0)
+		*/
+		if (n < 0)
 		{
 			cout << "That is not a positive number!\n" << endl;
 		}
-		else if (n == 0)
+		else if (n	== 0)
 		{
 			cout << "The number cannot be 0.\n" << endl;
 		}
-		else
+		else {
 			break;
+		}
+			
 	}
 
 	int row = 0; // Adds a # to each successive row
