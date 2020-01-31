@@ -14,13 +14,13 @@ using std::setprecision;
 
 int main()
 {
-    int ax;
-    int ay; // Vector A points
-    int az;
+    double ax;
+    double ay; // Vector A points
+    double az;
 
-    int bx;
-    int by; // Vector B points
-    int bz;
+    double bx;
+    double by; // Vector B points
+    double bz;
 
     // VECTOR A POINTS USER INPUT 
     cout << "Enter x value for Vector A: ";
@@ -41,6 +41,20 @@ int main()
     cin >> bz;
     cout << "Vector B floating points: (" << bx << ", " << by << ", " << bz << ")" << endl;
 
+
+    // DOT PRODUCT CALCULATION
+    double dotx = ax * bx;
+    double doty = ay * by;
+    double dotz = az * bz;
+    cout << "\nDot product of vectors A and B: " << dotx + doty + dotz << endl;
+
+
+    // CROSS PRODUCT CALCULATION
+    double cx = (ay * bz) - (az * by);
+    double cy = (az * bx) - (ax * bz);
+    double cz = (ax * by) - (bx * ay);
+
+    cout << "Cross product of vectors A and B: (" << setprecision(5) << cx << ", " << cy << ", " << cz << ")";
 
 
     return 0;
