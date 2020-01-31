@@ -14,9 +14,16 @@ using std::setprecision;
 
 int main()
 {
+    int ax;
+    int ay; // Vector A points
+    int az;
 
+    int bx;
+    int by; // Vector B points
+    int bz;
 
-
+    cout << "Enter x y z points for vector A: ";
+    cin >> ay;
 
     return 0;
 }
