@@ -18,13 +18,6 @@ int main()
 	{
 		cout << "Enter a positive number: ";
 		cin >> n;
-		/*
-		if (!n)
-		{
-			cout << "That is not a number.\n" << endl;
-			continue;
-		}
-		*/
 		if (n < 0)
 		{
 			cout << "That is not a positive number!\n" << endl;
