@@ -22,8 +22,26 @@ int main()
     int by; // Vector B points
     int bz;
 
-    cout << "Enter x y z points for vector A: ";
+    // VECTOR A POINTS USER INPUT 
+    cout << "Enter x value for Vector A: ";
+    cin >> ax;
+    cout << "Enter y value for Vector A: ";
     cin >> ay;
+    cout << "Enter z value for Vector A: ";
+    cin >> az; 
+    cout << "Vector A floating points: (" << ax << ", " << ay << ", " << az << ")" << endl;
+
+
+    // VECTOR B POINTS USER INPUT
+    cout << "Enter x value for Vector B: ";
+    cin >> bx;
+    cout << "Enter y value for Vector B: ";
+    cin >> by;
+    cout << "Enter z value for Vector B: ";
+    cin >> bz;
+    cout << "Vector B floating points: (" << bx << ", " << by << ", " << bz << ")" << endl;
+
+
 
     return 0;
 }
