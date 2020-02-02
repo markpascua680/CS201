@@ -23,18 +23,28 @@ int main()
         n = 0;
         cin >> n; 
 
+        if (n > max) // Stores the largest integer
+        {
+            max = n;
+        }
+
+        if (n == 0 && max == 0) // Indicates if no numbers were entered
+        {
+            cout << "No positive integers were entered.";
+        }
+
         if (n == 0) // Stops loop
         {
             break;
         }
 
-        if (n > max) // Stores the largest integer
-        {
-            max = n;
-        }
+        
     }
 
-    cout << "\nThe greatest number entered: " << max;
+    if (max != 0)
+    {
+        cout << "\nThe greatest number entered: " << max;
+    }
     
     return 0;
 }
