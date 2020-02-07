@@ -18,6 +18,14 @@ void PrintNames(const vector<string>& names);
 int main(int argc, char** argv)
 {
 	vector<string> names;
+	
+	InputNames(names);
+
+	return 0;
+}
+
+void InputNames(vector<string>& names)
+{
 	for (int i = 0; i < 10; i++)
 	{
 		string name;
@@ -26,7 +34,10 @@ int main(int argc, char** argv)
 		names.push_back(name);
 	}
 
+	cout << "Names listed: " << endl;
 
-
-	return 0;
+	for (int i = 0; i < 10; i++)     // Prints the list of names
+	{
+		cout << names[i] << " ";
+	}
 }
