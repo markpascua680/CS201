@@ -20,8 +20,14 @@ void PrintNames(const vector<string>& names);
 int main(int argc, char** argv)
 {
 	vector<string> names;
+	string nameToFind;
 	
 	InputNames(names);
+	PrintNames(names);
+
+	cout << "Search for a name: ";
+	cin >> nameToFind;
+	DoesNameExist(nameToFind, names);
 
 	return 0;
 }
@@ -49,4 +55,22 @@ void PrintNames(const vector<string>& names)
 	{
 		cout << names[i] << " ";
 	}
+	cout << endl;
+}
+
+
+
+bool DoesNameExist(const string& nameToFind, const vector<string> names)
+{
+	for (int i = 0; i < 10; i++)
+	{
+		if (nameToFind == names[i])
+		{
+			cout << "Name found at sector " << i << ": " << names[i];
+			return true;
+		}
+	}
+	
+	cout << "Name does not exist.";
+	return false;
 }
