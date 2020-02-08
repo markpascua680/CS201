@@ -23,11 +23,14 @@ int main(int argc, char** argv)
 	string nameToFind;
 	
 	InputNames(names);
-	PrintNames(names);
 
 	cout << "Search for a name: ";
 	cin >> nameToFind;
 	DoesNameExist(nameToFind, names);
+
+	PrintNames(names);
+
+	
 
 	return 0;
 }
@@ -43,6 +46,7 @@ void InputNames(vector<string>& names)
 		std::getline(cin, name);
 		names.push_back(name);
 	}
+	cout << "\n" << endl;
 }
 
 
@@ -55,7 +59,8 @@ void PrintNames(const vector<string>& names)
 	{
 		cout << names[i] << " ";
 	}
-	cout << endl;
+
+	cout << "\nName with the highest amount of letters: " << endl;
 }
 
 
@@ -66,11 +71,11 @@ bool DoesNameExist(const string& nameToFind, const vector<string> names)
 	{
 		if (nameToFind == names[i])
 		{
-			cout << "Name found at sector " << i << ": " << names[i];
+			cout << "Name found at sector " << i << ": " << names[i] << "\n" << endl;
 			return true;
 		}
 	}
 	
-	cout << "Name does not exist.";
+	cout << "Name does not exist.\n" << endl;
 	return false;
 }
