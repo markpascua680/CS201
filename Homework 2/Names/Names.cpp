@@ -60,7 +60,21 @@ void PrintNames(const vector<string>& names)
 		cout << names[i] << " ";
 	}
 
-	cout << "\nName with the highest amount of letters: " << endl;
+	int long_name = 0;					 // Marks the name with the most letters
+	string name; 
+	cout << "\nThe name with the most letters: " << endl;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (names[i].size() > long_name)
+		{
+			long_name = names[i].size();
+			name = names[i];
+		}
+	}	
+
+	cout << name;
+
 }
 
 
