@@ -1,3 +1,8 @@
+/* Jay-Mark Pascua
+   CS 201
+   02/04/2020
+   Outputs 10 names from the user and outputs the one with the most letters
+*/
 #include <iostream>
 #include <vector>
 #include <string>
