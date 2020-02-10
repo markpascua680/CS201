@@ -36,11 +36,26 @@ int main()
     return 0;
 }
 
-void printCoins(int p, int n, int d, int q, int dol)
+void printCoins(int p, int n, int d, int q, int dol) // Prints amount of each coin
 {
-    cout << "You have " << p << " pennies" << endl;
-    cout << "You have " << n << " nickels" << endl;
-    cout << "You have " << d << " dimes" << endl;
-    cout << "You have " << q << " quarters" << endl;
+    if (p == 1)                                      // If statements output singular amount
+        cout << "You have " << p << " penny" << endl;
+    else 
+        cout << "You have " << p << " pennies" << endl;
+    if (n == 1)
+        cout << "You have " << n << " nickel" << endl;
+    else 
+        cout << "You have " << n << " nickels" << endl;
+    if (d == 1)
+        cout << "You have " << d << " dime" << endl;
+    else
+        cout << "You have " << d << " dimes" << endl;
+    if (q == 1)
+        cout << "You have " << q << " quarters" << endl;
+    else 
+        cout << "You have " << q << " quarters" << endl;
+    if (dol == 1)
+        cout << "You have " << dol << " dollar" << endl;
+    else
     cout << "You have " << dol << " dollars" << endl;
 }
