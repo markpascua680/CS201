@@ -14,9 +14,10 @@ int nickels;
 int dimes;
 int quarters;
 int dollars;
-int total;
+double amount;
 
 void printCoins(int p, int n, int d, int q, int dol);
+void total(int p, int n, int d, int q, int dol);
 
 int main()
 {
@@ -30,8 +31,9 @@ int main()
         cin >> quarters;
     cout << "How many dollar coins do you have?" << endl;
         cin >> dollars;
-
+        cout << endl;
         printCoins(pennies, nickels, dimes, quarters, dollars);
+        total(pennies, nickels, dimes, quarters, dollars);
 
     return 0;
 }
@@ -58,4 +60,10 @@ void printCoins(int p, int n, int d, int q, int dol) // Prints amount of each co
         cout << "You have " << dol << " dollar" << endl;
     else
     cout << "You have " << dol << " dollars" << endl;
+}
+
+void total(int p, int n, int d, int q, int dol)
+{
+    amount = (double)(p + (5 * n) + (10 * d) + (25 * q) + (100 * dol)) / 100;
+    cout << "\nThe value of all your coins is $" << amount << endl;
 }
