@@ -53,7 +53,7 @@ void printCoins(int p, int n, int d, int q, int dol) // Prints amount of each co
     else
         cout << "You have " << d << " dimes" << endl;
     if (q == 1)
-        cout << "You have " << q << " quarters" << endl;
+        cout << "You have " << q << " quarter" << endl;
     else 
         cout << "You have " << q << " quarters" << endl;
     if (dol == 1)
