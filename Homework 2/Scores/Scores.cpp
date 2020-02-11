@@ -151,7 +151,7 @@ int searchName()
     cout << "Search for a name: " << endl; // Search vector names for a name
     cin >> name;
 
-    for (int i = 0; i < names.size(); i++)
+    for (int i = 0; i < names.size(); i++) // Checks each vector element for name
     {
         if (name == names[i])
         {
@@ -168,5 +168,23 @@ int searchName()
 
 int searchScore()
 {
+    string num;
+    int notFound = 0;
+
+    cout << "Search for a score: " << endl; // Search vector scores for a score
+    cin >> num;
+
+    cout << "Names with that score:" << endl;
+    for (int i = 0; i < scores.size(); i++) // Checks each vector element for score
+    {
+        if (num == scores[i])
+        {
+            cout << names[i] << " ";
+            int notFound = 1;
+        }
+    }
+    if (notFound == 1)
+        return 0;
+    cout << "Score not found.";
     return 0;
 }
