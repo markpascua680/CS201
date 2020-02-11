@@ -20,8 +20,8 @@ vector<string> scores;
 void namesNumbers();
 void selectOption();
 void printNamesScores();
-void searchName();
-void searchScore();
+int searchName();
+int searchScore();
 
 int option; // The option chosen by user
 int flag = 0;   // Stops while loop in namesNumbers
@@ -103,22 +103,26 @@ void selectOption()
     if (option == 1)
     {
         flag == 0;
+        cout << "\n" << endl;
         namesNumbers();
     }
     else if (option == 2)
     {
+        cout << "\n" << endl;
         printNamesScores();
     }
     else if (option == 3)
     {
-
+        cout << "\n" << endl;
+        searchName();
     }
     else if (option == 4)
     {
-
+        cout << "\n" << endl;
+        searchScore();
     }
-                else
-                    cout << "Invalid number" << endl;
+    else
+        cout << "Invalid number" << endl;
 }
 
 
@@ -140,16 +144,29 @@ void printNamesScores()
 
 
 
-void searchName()
+int searchName()
 {
+    string name;
 
+    cout << "Search for a name: " << endl; // Search vector names for a name
+    cin >> name;
+
+    for (int i = 0; i < names.size(); i++)
+    {
+        if (name == names[i])
+        {
+            cout << name << "'s score is: " << scores[i] << endl;
+            return 0;
+        }
+    }
+    cout << "Name not found." << endl;
 }
 
 
 
 
 
-void searchScore()
+int searchScore()
 {
-
+    return 0;
 }
