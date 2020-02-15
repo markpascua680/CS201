@@ -138,8 +138,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Boxer.cpp" />
     <ClCompile Include="BoxerPrint.cpp" />
+    <ClCompile Include="Boxer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Boxer.h" />
