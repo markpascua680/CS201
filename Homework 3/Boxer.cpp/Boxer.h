@@ -6,8 +6,13 @@
 
 #ifndef BOXER_H
 #define BOXER_H
+using std::cout;
+using std::endl;
+using std::cin;
+using std::string;
+using std::vector;
 
-int box(int n);
+string box(string word, int n);
 
 #endif // !BOXER_H
 
