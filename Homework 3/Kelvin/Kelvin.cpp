@@ -55,8 +55,9 @@ int main()
 
     double k = ctok(c);
 
-    if (c >= 273.15) // Detects temp less than -273.15
+    if (c >= -273.15) // Detects temp less than -273.15
     {
         cout << k << "\n";
     }
+    
 }
