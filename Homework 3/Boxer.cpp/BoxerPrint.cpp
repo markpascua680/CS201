@@ -22,6 +22,11 @@ int main()
 
         cout << "\nEnter a positive number: ";
         cin >> n;
+        while (n < 0)
+        {
+            cout << "That's not a positve number. Please try again: ";
+            cin >> n;
+        }
 
         cout << box(word, n) << endl;
 

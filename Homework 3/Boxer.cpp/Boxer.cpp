@@ -10,17 +10,26 @@
 
 string box(string word, int n)
 {
-    string ast = "****"; // Asterisks
+    string ast = ""; // Asterisks
+    string message = "";
 
-    for (int i = 0; i < word.size(); i++) // Prints asterisks length
+    // BOX TOP
+    if (n != 0)
     {
-        ast += "*";
+        ast += "****";
+        for (int i = 0; i < word.size(); i++) // Prints asterisks length
+        {
+            ast += "*";
+        }
+
+        for (int i = 0; i < n; i++) // Prints asterisks width
+        {
+            ast += "\n" + ast;
+        }
     }
 
-    for (int i = 0; i < n; i++) // Prints asterisks width
-    {
-        ast += "\n" + ast;
-    }
+    // BOX MID W/ MESSAGE
+
 
 
 
