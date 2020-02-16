@@ -1,7 +1,7 @@
 /* Jay-Mark Pascua
    CS 201
    02/16/2020
-   Takes in user's integer and plugs it into the Collatz sequence until 1 is reached
+   Takes in user's integer (temperature in Celsius) and converts it into Kelvin
 */
 #include <iostream>
 
