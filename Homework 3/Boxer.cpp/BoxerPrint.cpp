@@ -18,7 +18,10 @@ int main()
         cout << "Enter a Message (or STOP to cancel): ";
         cin >> word;
         if (word == "STOP") // Stop program
+        {
+            cout << "Program closed.";
             break;
+        }
 
         cout << "\nEnter a positive number: ";
         cin >> n;
