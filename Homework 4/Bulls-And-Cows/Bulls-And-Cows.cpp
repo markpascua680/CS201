@@ -2,6 +2,7 @@
    Jay-Mark Pascua
    CS 201
    02/25/2020
+   User guesses a four digit number
 */
 #include <iostream>
 #include <sstream>
@@ -47,7 +48,7 @@ int main()
     return 0;
 }
 
-
+///////////////BULLS FUNCTION///////////////
 void Bulls(string guess) // Searches for correct numbers in correct position
 {
     int bulls = 0;
@@ -70,7 +71,7 @@ void Bulls(string guess) // Searches for correct numbers in correct position
 }
 
 
-
+///////////////COWS FUNCTION///////////////
 void Cows(string guess) // Searches for correct numbers in wrong position
 {
     int cows = 0;
