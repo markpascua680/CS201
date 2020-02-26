@@ -14,6 +14,8 @@ int main()
 
     cout << "Please type in some text. Enter \"End\", \"end\", or \"END\" when finished." << endl;
 
+
+
     while (true) // Loops user's input
     {
         getline(cin, str);
@@ -29,12 +31,13 @@ int main()
         }
     }
 
+
+
     tokens.pop_back(); // Deletes the excess whitespace at the end of the vector after user enters "End"
 
-    for (int i = 0; i < tokens.size(); i++) // Prints token vector
-    {
-        cout << "HERE: " << tokens[i] << endl;
-    }
+
+
+    AnalyzeTokens(tokens);
 
     
 
