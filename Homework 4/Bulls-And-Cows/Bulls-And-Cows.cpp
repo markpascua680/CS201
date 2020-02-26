@@ -4,12 +4,14 @@
    02/25/2020
 */
 #include <iostream>
+#include <sstream>
 #include <string>
 
 using std::cout;
 using std::endl;
 using std::cin;
 using std::string;
+using std::istringstream;
 
 void Bulls(string guess);
 void Cows(string guess);
@@ -25,12 +27,15 @@ int main()
     {
         getline(cin, guess);
 
-        if (guess.size() < 4) // Error check
+        int num;
+        istringstream error(guess); // Ensures inputs are digits
+        error >> num;
+        if (guess.size() < 4 || guess.size() > 4 || !error) // Error check
         {
             cout << "Please enter four digits!" << endl;
         }
 
-        if (guess.size() == 4)
+        if (guess.size() == 4 && error)
         {
             Bulls(guess);
             Cows(guess);
@@ -54,7 +59,7 @@ void Bulls(string guess) // Searches for correct numbers in correct position
         }
     }
 
-    if (bulls == 0)
+    if (bulls == 0 || bulls > 1) // Outputs number of correct numbers in the correct position
     {
         cout << bulls << " bulls and ";
     }
@@ -62,15 +67,41 @@ void Bulls(string guess) // Searches for correct numbers in correct position
     {
         cout << bulls << " bull and ";
     }
-    else if (bulls > 1)
-    {
-        cout << bulls << " bulls and ";
-    }
 }
 
 
 
-void Cows(string guess)
+void Cows(string guess) // Searches for correct numbers in wrong position
 {
-    
+    int cows = 0;
+
+    if (guess.at(0) == '4' || guess.at(0) == '2' || guess.at(0) == '0')
+    {
+        cows++;
+    }
+
+    if (guess.at(1) == '7' || guess.at(1) == '2' || guess.at(1) == '0')
+    {
+        cows++;
+    }
+
+    if (guess.at(2) == '7' || guess.at(2) == '4' || guess.at(2) == '0')
+    {
+        cows++;
+    }
+
+    if (guess.at(3) == '7' || guess.at(3) == '4' || guess.at(3) == '2')
+    {
+        cows++;
+    }
+
+
+    if (cows == 0 || cows > 1) // Outputs number of correct numbers in the wrong position
+    {
+        cout << cows << " cows" << endl;
+    }
+    else if (cows == 1)
+    {
+        cout << cows << " cow" << endl;
+    }
 }
