@@ -107,11 +107,14 @@ void FifoPop(vector<string>& container, string& item) // Pops the item that was 
             temp[i - 1] = container[i];
         }
         container = temp; // Sets FIFO container its first element popped
+
+        cout << "\n\nThe oldest item that was added has been removed." << endl;
+        cout << "\nItems in FIFO container:" << endl;
         PrintContainer(container);
     }
     else if (IsContainerEmpty(container) == false)
     {
-        cout << "There are no items in this container. Please place some.\n\n";
+        cout << "\nThere are no items in this container. Please place some.\n\n";
     }
 }
 ////////////////////////////////////////////////////////////////////
@@ -127,7 +130,18 @@ void LifoPush(vector<string>& container, const string& item) // Pushes an item i
 
 void LifoPop(vector<string>& container, string& item) // Pops the item that was last in from the LIFO container
 {
+    if (IsContainerEmpty(container) == true)
+    {
+        container.pop_back();
 
+        cout << "\n\nThe most recently added item has been removed." << endl;
+        cout << "\nItems in LIFO container:" << endl;
+        PrintContainer(container);
+    }
+    else if (IsContainerEmpty(container) == false)
+    {
+        cout << "\nThere are no items in this container. Please place some.\n\n";
+    }
 }
 ///////////////////////////////////////////////////////////////////
 ///////////////////////SHARED FUNCTIONALITY///////////////////////
