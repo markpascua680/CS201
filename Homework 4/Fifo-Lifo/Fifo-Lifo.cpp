@@ -76,7 +76,8 @@ int main()
         }
         else if (num == 4)
         {
-
+            item = "";
+            LifoPop(lifo, item);
         }
         cout << "\nSelect another option (enter its number):\n";
     } 
