@@ -59,7 +59,7 @@ int main()
 
         if (num == 1)
         {
-            cout << "Enter an item to push: ";
+            cout << "Enter an item to push to FIFO container: ";
             getline(cin, item);
             FifoPush(fifo, item);
         }
@@ -70,7 +70,9 @@ int main()
         }
         else if (num == 3)
         {
-
+            cout << "Enter an item to push to LIFO container: ";
+            getline(cin, item);
+            LifoPush(lifo, item);
         }
         else if (num == 4)
         {
@@ -91,12 +93,7 @@ void FifoPush(vector<string>& container, const string& item) // Pushes an item i
     container.push_back(item);
 
     cout << "\nItems in FIFO container:" << endl;
-    for (auto i : container) // Prints all elements in FIFO container
-    {
-        cout << "|"; // Item dividers for output neatness
-        cout << i << "|";
-    }
-    cout << "\n";
+    PrintContainer(container);
 }
 
 
@@ -110,12 +107,7 @@ void FifoPop(vector<string>& container, string& item) // Pops the item that was 
             temp[i - 1] = container[i];
         }
         container = temp; // Sets FIFO container its first element popped
-        for (auto i : container) // Prints all elements in FIFO container
-        {
-            cout << "|"; // Item dividers for output neatness
-            cout << i << "|";
-        }
-        cout << "\n";
+        PrintContainer(container);
     }
     else if (IsContainerEmpty(container) == false)
     {
@@ -126,7 +118,10 @@ void FifoPop(vector<string>& container, string& item) // Pops the item that was 
 ////////////////////LAST IN FIRST OUT FUNCTIONS////////////////////
 void LifoPush(vector<string>& container, const string& item) // Pushes an item into the LIFO container
 {
+    container.push_back(item);
 
+    cout << "Items in LIFO container:" << endl;
+    PrintContainer(container);
 }
 
 
@@ -146,5 +141,10 @@ bool IsContainerEmpty(const vector<string>& container)
 
 void PrintContainer(const vector<string>& container)
 {
-
+    for (auto i : container) // Prints all elements in FIFO container
+    {
+        cout << "|"; // Item dividers for output neatness
+        cout << i << "|";
+    }
+    cout << "\n";
 }
