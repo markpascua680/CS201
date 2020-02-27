@@ -31,37 +31,42 @@ void PrintContainer(const vector<string>& container);
 
 int main()
 {
-    vector<string> container; // Container holding user's inputted items
+    vector<string> fifo; // FIFO container holding user's inputted items
+    vector<string> lifo; // LIFO container holding user's inputted items
     string option; // User's option to add or pop an item
     string item; // User's inputted items
+    int num = 0; // Detects if user inputs a single digit for the options choice
 
     cout << "~~~~~~~~~~\"Inventory Tracker\"~~~~~~~~~~\n" << endl;
     cout << "Select an option (enter its number):\n";
     cout << "(1) Push item to FIFO container\n";
     cout << "(2) Pop item to FIFO container\n";
     cout << "(3) Push item to LIFO container\n";
-    cout << "(4) Pop item to LIFO container\n" << endl;
+    cout << "(4) Pop item to LIFO container\n";
+    cout << "(5) Close program\n" << endl;
 
-    while (true)
+    while (num != 5)
     {
         getline(cin, option); // User's option input
 
-        int num;
         istringstream opt(option); // Reads a digit from option
         opt >> num; // Ensures input is a single digit
 
-        if (!opt || num > 4 || num < 1) // Error check
+        if (!opt || num > 5 || num < 1) // Error check
         {
             cout << "\nPlease enter an option 1-4" << endl;
         }
 
         if (num == 1)
         {
-
+            cout << "Enter an item to push: ";
+            getline(cin, item);
+            FifoPush(fifo, item);
         }
         else if (num == 2)
         {
-
+            item = "";
+            FifoPop(fifo, item);
         }
         else if (num == 3)
         {
@@ -71,12 +76,44 @@ int main()
         {
 
         }
+        cout << "\nSelect another option (enter its number):\n";
+    } 
 
-    }
+    cout << "\nHave a good day!";
 
-
-    
-
-    
     return 0;
 }
+
+/////////////////////////////////////////////////////////////////////
+////////////////////FIRST IN FIRST OUT FUNCTIONS////////////////////
+void FifoPush(vector<string>& container, const string& item) // Pushes an item into the FIFO container
+{
+    container.push_back(item);
+
+    cout << "\nItems in FIFO container:" << endl;
+    for (auto i : container) // Prints all elements in FIFO container
+    {
+        cout << "|"; // Item dividers for output neatness
+        cout << i << "|";
+    }
+    cout << "\n";
+}
+
+
+void FifoPop(vector<string>& container, string& item) // Pops the item that was first in from FIFO container
+{
+
+}
+////////////////////////////////////////////////////////////////////
+////////////////////LAST IN FIRST OUT FUNCTIONS////////////////////
+void LifoPush(vector<string>& container, const string& item) // Pushes an item into the LIFO container
+{
+
+}
+
+
+void LifoPop(vector<string>& container, string& item) // Pops the item that was last in from the LIFO container
+{
+
+}
+///////////////////////////////////////////////////////////////////
