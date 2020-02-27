@@ -102,7 +102,25 @@ void FifoPush(vector<string>& container, const string& item) // Pushes an item i
 
 void FifoPop(vector<string>& container, string& item) // Pops the item that was first in from FIFO container
 {
-
+    if (IsContainerEmpty(container) == true)
+    {
+        vector<string> temp(container.size() - 1); // Creates temp vector to hold elements from container vector
+        for (int i = 1; i < container.size(); i++) // Pops the first element from FIFO container
+        {
+            temp[i - 1] = container[i];
+        }
+        container = temp; // Sets FIFO container its first element popped
+        for (auto i : container) // Prints all elements in FIFO container
+        {
+            cout << "|"; // Item dividers for output neatness
+            cout << i << "|";
+        }
+        cout << "\n";
+    }
+    else if (IsContainerEmpty(container) == false)
+    {
+        cout << "There are no items in this container. Please place some.\n\n";
+    }
 }
 ////////////////////////////////////////////////////////////////////
 ////////////////////LAST IN FIRST OUT FUNCTIONS////////////////////
@@ -117,3 +135,16 @@ void LifoPop(vector<string>& container, string& item) // Pops the item that was 
 
 }
 ///////////////////////////////////////////////////////////////////
+///////////////////////SHARED FUNCTIONALITY///////////////////////
+bool IsContainerEmpty(const vector<string>& container)
+{
+    if (container.size() > 0)
+        return true;
+    return false;
+}
+
+
+void PrintContainer(const vector<string>& container)
+{
+
+}
