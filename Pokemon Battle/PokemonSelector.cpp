@@ -2,49 +2,35 @@
    Jay-Mark Pascua
    CS 201
    03/22/2020
-   Holds Pokemon and their stats
+   Chooses Pokemon for players
 */
 
 #include "Pokemon.h"
 
-double hp;
-double atk;
-double def;
-double spAtk;
-double spDef;
-double speed;
 
-// Pokemon                hp, atk, def, spAtk, spDef, speed
-vector<double> bulbStats{ 45, 49, 49, 65, 65, 45 }; // Bulbasaur ID #1
-vector<double> charStats{ 39, 52, 43, 60, 50, 65 }; // Charmander ID #2
-vector<double> squiStats{ 44, 48, 65, 50, 64, 43 }; // Squirtle ID #3
-vector<double> pikaStats{ 35, 55, 40, 50, 50, 90 }; // Pikachu ID #4
-vector<double> bidoStats{ 59, 45, 40, 35, 40, 31 }; // Bidoof ID #5
-
-struct Stats
+// Pokemon      hp, atk, def, spAtk, spDef, speed
+string pSelect(int id)
 {
-
-};
-
-vector<double> pSelect(int id)
-{
-    switch (id)
+    if (id == 1) // Can be extended to add more Pokemon
     {
-    case 1:
-        cout << " Bulbasaur!" << endl;
-        return bulbStats;
-    case 2:
-        cout << " Charmander!" << endl;
-        return charStats;
-    case 3:
-        cout << " Squirtle!" << endl;
-        return squiStats;
-    case 4:
-        cout << " Pikachu!" << endl;
-        return pikaStats;
-    case 5:
-        cout << " Bidoof!" << endl;
-        return bidoStats;
+        Stats Bulbasaur{ 45, 49, 49, 65, 65, 45 };
+        return " Bulbasaur!";
+    }
+    else if (id == 2) {
+        Stats Charmander{ 39, 52, 43, 60, 50, 65 };
+        return " Charmander!";
+    }
+    else if (id == 3) {
+        Stats Squirtle{ 44, 48, 65, 50, 64, 43 };
+        return " Squirtle!";
+    }
+    else if (id == 4) {
+        Stats Pikachu{ 35, 55, 40, 50, 50, 90 };
+        return " Pikachu!";
+    }
+    else if (id == 5) {
+        Stats Bidoof{ 59, 45, 40, 35, 40, 31 };
+        return " Bidoof!";
     }
     
 

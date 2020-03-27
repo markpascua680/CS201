@@ -22,5 +22,25 @@ using std::cin;
 using std::string;
 using std::vector;
 
-vector<double> pSelect(int id);
+
+struct Stats
+{
+    double hp;
+    double atk;
+    double def;
+    double spAtk;
+    double spDef;
+    double speed;
+};
+
+struct Pokemon
+{
+    Stats Bulbasaur;
+    Stats Charmander;
+    Stats Squirtle;
+    Stats Pikachu;
+    Stats Bidoof;
+};
+
+string pSelect(int id);
 #endif

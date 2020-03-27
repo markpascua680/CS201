@@ -12,12 +12,13 @@ int main()
     srand((unsigned)time(0));
 
     cout << "You got";
-    vector<double> pPokemon = pSelect((rand() % 5) + 1); // Player's Pokemon
+    cout << pSelect((rand() % 5) + 1); // Player's Pokemon
 
     cout << "\nYour opponent got";
-    vector<double> cpuPokemon = pSelect((rand() % 5) + 1); // Opponent's Pokemon
+    cout << pSelect((rand() % 5) + 1); // Opponent's Pokemon
     cout << endl;
-    
+
+
 
 
 
