@@ -16,15 +16,13 @@
 #include <ctime>
 #include <cstdlib>
 
-using std::cout;
-using std::endl;
-using std::cin;
-using std::string;
-using std::vector;
+using namespace std;
 
 
-struct Stats
+struct Pokemon
 {
+    string name;
+    string type;
     double hp;
     double atk;
     double def;
@@ -33,14 +31,6 @@ struct Stats
     double speed;
 };
 
-struct Pokemon
-{
-    Stats Bulbasaur;
-    Stats Charmander;
-    Stats Squirtle;
-    Stats Pikachu;
-    Stats Bidoof;
-};
+Pokemon pSelect(int id);
 
-string pSelect(int id);
 #endif

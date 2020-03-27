@@ -11,11 +11,11 @@ int main()
 {
     srand((unsigned)time(0));
 
-    cout << "You got";
-    cout << pSelect((rand() % 5) + 1); // Player's Pokemon
+    Pokemon pPokemon = pSelect((rand() % 5) + 1); // Player's Pokemon
+    cout << "You got " << pPokemon.name;
 
-    cout << "\nYour opponent got";
-    cout << pSelect((rand() % 5) + 1); // Opponent's Pokemon
+    Pokemon cPokemon =  pSelect((rand() % 5) + 1); // Opponent's Pokemon
+    cout << "\nYour opponent got " << cPokemon.name;
     cout << endl;
 
 
