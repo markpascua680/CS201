@@ -140,7 +140,7 @@
   <ItemGroup>
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="PokemonSelector.cpp" />
-    <ClCompile Include="AtkAndType.cpp" />
+    <ClCompile Include="Attacks.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon.h" />

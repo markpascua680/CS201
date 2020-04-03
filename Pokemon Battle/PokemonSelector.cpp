@@ -28,7 +28,7 @@ Pokemon pSelect(int id)
         Pokemon Pikachu{ "Pikachu!", "Electric", 35, 55, 40, 50, 50, 90 };
         return Pikachu;
     }
-    else if (id == 5) {
+    else {
         Pokemon Bidoof{ "Bidoof!", "Normal", 59, 45, 40, 35, 40, 31 };
         return Bidoof;
     }

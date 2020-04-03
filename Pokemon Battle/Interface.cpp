@@ -9,14 +9,21 @@
 
 int main()
 {
-    srand((unsigned)time(0));
+    cout << "\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "\t\t\t\t\t   P O K E M O N" << endl;
+    cout << "\t\t\t\t\t~~~~~~~~~~~~~~~~~~~~" << endl;
+
+    srand((unsigned)time(0)); // Generates random number
 
     Pokemon pPokemon = pSelect((rand() % 5) + 1); // Player's Pokemon
-    cout << "You got " << pPokemon.name;
+    cout << "You got " << pPokemon.name << endl;
 
     Pokemon cPokemon =  pSelect((rand() % 5) + 1); // Opponent's Pokemon
     cout << "\nYour opponent got " << cPokemon.name;
-    cout << endl;
+    cout << "\n\nThe battle will commence\n" << endl;
+    system("PAUSE");
+    system("CLS");
+
 
 
 

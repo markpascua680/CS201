@@ -9,8 +9,10 @@
 #define POKEMON_H
 
 #include <iostream>
-#include <vector>
+#include <sstream>
+#include <map>
 #include <string>
+#include <tuple>
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctime>
