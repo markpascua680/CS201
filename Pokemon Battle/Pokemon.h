@@ -20,11 +20,19 @@
 
 using namespace std;
 
+struct Attack {
+    string elementType; // Grass, Fire, Water, etc.
+    string category;    // Physical, Special, Status effect, etc.
+    double power;       // Base damage of the attack
+    int accuracy;       // Chance of not missing attack
+    int pp;             // Power Points; how many times it can be used in battle
+};
 
 struct Pokemon
 {
     string name;
     string type;
+    Attack moves;
     double hp;
     double atk;
     double def;
