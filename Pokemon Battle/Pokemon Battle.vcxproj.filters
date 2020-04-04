@@ -18,10 +18,10 @@
     <ClCompile Include="Interface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PokemonSelector.cpp">
+    <ClCompile Include="PokemonAndAttacks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Attacks.cpp">
+    <ClCompile Include="Damage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

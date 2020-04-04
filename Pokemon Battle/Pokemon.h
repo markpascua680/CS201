@@ -32,7 +32,7 @@ struct Pokemon
 {
     string name;
     string type;
-    Attack moves;
+    map<string, Attack> moves;
     double hp;
     double atk;
     double def;

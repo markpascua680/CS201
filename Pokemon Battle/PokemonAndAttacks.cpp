@@ -7,7 +7,6 @@
 
 #include "Pokemon.h"
 
-
 // Pokemon      hp, atk, def, spAtk, spDef, speed
 Pokemon pSelect(int id)
 {
