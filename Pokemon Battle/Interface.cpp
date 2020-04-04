@@ -24,7 +24,9 @@ int main()
     system("PAUSE");
     system("CLS");
 
-
+    /*for ( auto it = pPokemon.moves.begin(); it != pPokemon.moves.end(); it++)
+    {
+    }*/
 
 
 

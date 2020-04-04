@@ -21,7 +21,7 @@
     <ClCompile Include="PokemonAndAttacks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Damage.cpp">
+    <ClCompile Include="ExecuteMove.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

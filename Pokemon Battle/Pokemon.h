@@ -12,7 +12,7 @@
 #include <sstream>
 #include <map>
 #include <string>
-#include <tuple>
+#include <iterator>
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctime>
@@ -33,6 +33,7 @@ struct Pokemon
     string name;
     string type;
     map<string, Attack> moves;
+    int level;
     double hp;
     double atk;
     double def;
