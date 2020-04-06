@@ -139,8 +139,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Interface.cpp" />
-    <ClCompile Include="PokemonAndAttacks.cpp" />
+    <ClCompile Include="PokemonSelect.cpp" />
     <ClCompile Include="ExecuteMove.cpp" />
+    <ClCompile Include="Attacks.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon.h" />

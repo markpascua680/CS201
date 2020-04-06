@@ -2,7 +2,7 @@
    Jay-Mark Pascua
    CS 201
    03/22/2020
-   Holds Pokemon attacks and damage
+   Executes an attack
 */
 
 #include "Pokemon.h"

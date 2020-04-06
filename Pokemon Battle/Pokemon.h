@@ -12,7 +12,7 @@
 #include <sstream>
 #include <map>
 #include <string>
-#include <iterator>
+#include <vector>
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctime>
@@ -20,19 +20,43 @@
 
 using namespace std;
 
-struct Attack {
-    string elementType; // Grass, Fire, Water, etc.
-    string category;    // Physical, Special, Status effect, etc.
-    double power;       // Base damage of the attack
-    int accuracy;       // Chance of not missing attack
-    int pp;             // Power Points; how many times it can be used in battle
+class Attacks {
+public:
+    Attacks(
+        string name,        // Name of attack
+        string type,        // Grass, Fire, Water, etc.
+        string category,    // Physical, Special, Status effect, etc.
+        double power,       // Base damage of the attack
+        int accuracy,       // Chance of hitting attack
+        int pp              // Power Points; how many times it can be used in battle
+    ) {
+        _name = name;
+        _type = type;
+        _category = category;
+        _power = power;
+        _accuracy = accuracy;
+        _pp = pp;
+      }
+
+    int getPower() {
+        return _power;
+    }
+
+private:
+    string _name;
+    string _type;
+    string _category;
+    double _power;
+    int _accuracy;
+    int _pp;
+
 };
 
 struct Pokemon
 {
     string name;
     string type;
-    map<string, Attack> moves;
+    vector<Attacks> attack;
     int level;
     double hp;
     double atk;
