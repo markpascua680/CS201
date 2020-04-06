@@ -68,4 +68,6 @@ struct Pokemon
 
 Pokemon pSelect(int id);
 
+vector<Attacks> makeMoveSet(int id);
+
 #endif

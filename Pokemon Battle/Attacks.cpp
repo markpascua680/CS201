@@ -43,4 +43,29 @@ Attacks Smokescreen("Smokescreen", "Normal", "Status", 0, 100, 20); // Lowers ta
 Attacks TailWhip("Tail Whip", "Normal", "Status", 0, 100, 30); // Lowers target's defense by 10%
 Attacks PlayNice("Play Nice", "Normal", "Status", 0, 100, 20); // Lowers target's Attack by 10%
 
-
+vector<Attacks> makeMoveSet(int id) { // Creates the Pokemon's attack set
+    vector<Attacks> attack(4);
+    switch (id)
+    {
+        case 1: { // Bulbasaur's Attacks
+            attack = { Tackle, Growth, VineWhip, RazorLeaf };
+            return attack;
+        }
+        case 2: { // Charmander's Attacks
+            attack = { Scratch, Smokescreen, Ember, FireFang };
+            return attack;
+        }
+        case 3: { // Squirtle's Attacks
+            attack = { Tackle, TailWhip, WaterGun, WaterPulse };
+            return attack;
+        }
+        case 4: { // Pikachu's Attacks
+            attack = { QuickAttack, PlayNice, ElectroBall, ThunderShock };
+            return attack;
+        }
+        case 5: { // Bidoof's Attacks
+            attack = { Tackle, DefenseCurl, Growth, Rollout };
+            return attack;
+        }
+    }
+}

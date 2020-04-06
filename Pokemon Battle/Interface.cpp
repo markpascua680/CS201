@@ -15,8 +15,15 @@ int main()
 
     srand((unsigned)time(0)); // Generates random number
 
-    Pokemon pPokemon = pSelect((rand() % 5) + 1); // Player's Pokemon
-    cout << "You got " << pPokemon.name << endl;
+    cout << "Choose your Pokemon: ";
+    cout << "[1] Bulbasaur\n[2] Charmander\n[3] Squirtle\n[4] Pikachu\n[5] Bidoof" << endl;
+    cout << "Enter a number: ";
+    
+    int id;
+    cin >> id;
+
+    Pokemon pPokemon = pSelect(id); // Player's Pokemon
+    cout << "You chose " << pPokemon.name << '!' << endl;
 
     Pokemon cPokemon =  pSelect((rand() % 5) + 1); // Opponent's Pokemon
     cout << "\nYour opponent got " << cPokemon.name;
