@@ -9,6 +9,7 @@
 #define POKEMON_H
 
 #include <iostream>
+#include <iomanip>
 #include <sstream>
 #include <map>
 #include <string>
@@ -27,7 +28,7 @@ public:
         string type,        // Grass, Fire, Water, etc.
         string category,    // Physical, Special, Status effect, etc.
         double power,       // Base damage of the attack
-        int accuracy,       // Chance of hitting attack
+        double accuracy,    // Chance of hitting attack
         int pp              // Power Points; how many times it can be used in battle
     ) {
         _name = name;
@@ -38,7 +39,7 @@ public:
         _pp = pp;
       }
 
-    int getPower() {
+    double getPower() {
         return _power;
     }
 
@@ -47,7 +48,7 @@ private:
     string _type;
     string _category;
     double _power;
-    int _accuracy;
+    double _accuracy;
     int _pp;
 
 };
@@ -66,8 +67,8 @@ struct Pokemon
     double speed;
 };
 
+// Functions
 Pokemon pSelect(int id);
-
 vector<Attacks> makeMoveSet(int id);
 
 #endif

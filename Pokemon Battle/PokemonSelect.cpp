@@ -16,19 +16,19 @@ Pokemon pSelect(int id)
         return Bulbasaur;
     }
     else if (id == 2) {
-        Pokemon Charmander{ "Charmander!", "Fire", makeMoveSet(id), 14, 39, 52, 43, 60, 50, 65 };
+        Pokemon Charmander{ "Charmander", "Fire", makeMoveSet(id), 14, 39, 52, 43, 60, 50, 65 };
         return Charmander;
     }
     else if (id == 3) {
-        Pokemon Squirtle{ "Squirtle!", "Water", makeMoveSet(id), 16, 44, 48, 65, 50, 64, 43 };
+        Pokemon Squirtle{ "Squirtle", "Water", makeMoveSet(id), 16, 44, 48, 65, 50, 64, 43 };
         return Squirtle;
     }
     else if (id == 4) {
-        Pokemon Pikachu{ "Pikachu!", "Electric", makeMoveSet(id), 13, 35, 55, 40, 50, 50, 90 };
+        Pokemon Pikachu{ "Pikachu", "Electric", makeMoveSet(id), 13, 35, 55, 40, 50, 50, 90 };
         return Pikachu;
     }
     else {
-        Pokemon Bidoof{ "Bidoof!", "Normal", makeMoveSet(id), 15, 59, 45, 40, 35, 40, 31 };
+        Pokemon Bidoof{ "Bidoof", "Normal", makeMoveSet(id), 15, 59, 45, 40, 35, 40, 31 };
         return Bidoof;
     }
     
