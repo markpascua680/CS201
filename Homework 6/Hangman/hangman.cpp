@@ -14,25 +14,31 @@
 
 using namespace std;
 
+bool isCorrect(string guess) // Checks if guessed letter is correct
+{
 
+    return false;
+}
 
 void main()
 {
-    string answer = "moist"; // Hangman solution
+    
     string guess; // User guesses a letter
-    map<char, string> usedLetters;
-
+    map<int, string> usedLetters; // Stores used letters
     
-    
+    int i = 1; // Number of iterations for while loop
+    int flag = 0; // 0 = lose, 1 = win
 
-    for (int i = 1; i <= 10; i++)
+    while (i != 10 && flag == 0) // User has 10 chances to guess
     {
+        cout << "Guess a letter: ";
         cin >> guess;
 
         if (guess.length() == 1) { // Test if input is one letter
+            isCorrect(guess);
             cout << "Guess: " << guess << endl;
         }
-        else if (guess == "moist") { // Test if user guesses the answer
+        else if (guess == "moist") { // Ends loop if user guesses the answer
 
         }
         
