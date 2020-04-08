@@ -16,18 +16,18 @@
 using namespace std;
 
 std::uniform_int_distribution<int> RandomBetweenU(int first, int last) { // Returns a uniform random number between 
-    std::uniform_int_distribution<int> destrib{ first, last };             // first and last, inclusively
-    return destrib;
+    std::uniform_int_distribution<int> num(first, last);             // first and last, inclusively
+    return num;
 }
 
 std::normal_distribution<double> RandomBetweenN(double first, double last) { // Returns a normally distributed random number between first and last, inclusively
-    std::normal_distribution<double> destrib{ first, last };
-    return destrib;
+    std::normal_distribution<double> num{ first, last };
+    return num;
 }
 
 int RandomBetween(int first, int last) { // Returns number using rand()
-    int random = (rand() * last) + first;
-    return random;
+    int num = (rand() * last) + first;
+    return num;
 }
 
 void PrintDistribution(const map<int, int>& numbers) { // Prints list of the random numbers 
@@ -44,7 +44,7 @@ int main()
     int mean = uniform_dist(e1);
     cout << "Randomly chosen mean: " << mean << '\n';
 
-    //Generate a normal distribution around that mean
+    // Generate a normal distribution around that mean
     seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
     mt19937 e2(seed2);
     normal_distribution<> normal_dist(mean, 2);
@@ -62,7 +62,8 @@ int main()
         cout << fixed << setprecision(1) << setw(2) << p.first << ' ' << string(p.second / 200, '*') << '\n';
     }
 
-
+    // Uniform int distribution
+    cout << "\n\n" << RandomBetweenU(1, 6);
 
     return 0;
 }
