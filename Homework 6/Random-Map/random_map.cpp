@@ -15,23 +15,22 @@
 
 using namespace std;
 
-int RandomBetweenU(int first, int last) { // Returns a uniform random number between first and last, inclusively
-
-    return 0;
+std::uniform_int_distribution<int> RandomBetweenU(int first, int last) { // Returns a uniform random number between 
+    std::uniform_int_distribution<int> destrib{ first, last };             // first and last, inclusively
+    return destrib;
 }
 
-int RandomBetweenN(int first, int last) { // Returns a normally distributed random number between first and last, inclusively
-
-    return 0;
+std::normal_distribution<double> RandomBetweenN(double first, double last) { // Returns a normally distributed random number between first and last, inclusively
+    std::normal_distribution<double> destrib{ first, last };
+    return destrib;
 }
 
 int RandomBetween(int first, int last) { // Returns number using rand()
-
-    return 0;
+    int random = (rand() * last) + first;
+    return random;
 }
 
 void PrintDistribution(const map<int, int>& numbers) { // Prints list of the random numbers 
-
 }
 
 int main()
@@ -62,6 +61,8 @@ int main()
     {
         cout << fixed << setprecision(1) << setw(2) << p.first << ' ' << string(p.second / 200, '*') << '\n';
     }
+
+
 
     return 0;
 }

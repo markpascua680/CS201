@@ -32,6 +32,17 @@ void revealLetter(vector<string>& answer, vector<string>& blanks, string guess) 
     blanks[it-answer.begin()] = guess;
 }
 
+bool allLettersFound(vector<string>& answer, vector<string>& blanks) {
+    if (answer == blanks) {
+        return true;
+    }
+    return false;
+}
+
+bool alreadyGuessed(map<int, string>& usedGuesses, string guess) {
+
+}
+
 void main()
 {
     vector<string> answer{ "m", "o", "i", "s", "t" };
@@ -50,6 +61,11 @@ void main()
         cout << "\nGuess a letter or the answer: ";
         cin >> guess;
         system("CLS");
+
+        /*if (alreadyGuessed(usedGuesses, guess)) {
+            cout << "You've already guessed that letter!";
+            continue;
+        }*/
 
         if (guess.length() == 1) { // Test if input is one letter
             if (isCorrect(answer, guess)) {
@@ -73,8 +89,13 @@ void main()
             usedGuesses[attempts] = guess;
             attempts--;
         }
-
+        if (allLettersFound(answer, blanks)) { // Checks if all letters of the answer have been found
+            cout << "You got it!\nThe answer is moist!" << endl;
+            flag = 1;
+        }
         
     }
+    if (attempts == 0) // User ran out of attempts message
+        cout << "You ran out of attempts! Try again!";
 
 }
