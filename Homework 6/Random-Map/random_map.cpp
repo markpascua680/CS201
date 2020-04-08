@@ -7,12 +7,32 @@
 
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 #include <string>
 #include <map>
 #include <random>
 #include <cmath>
 
 using namespace std;
+
+int RandomBetweenU(int first, int last) { // Returns a uniform random number between first and last, inclusively
+
+    return 0;
+}
+
+int RandomBetweenN(int first, int last) { // Returns a normally distributed random number between first and last, inclusively
+
+    return 0;
+}
+
+int RandomBetween(int first, int last) { // Returns number using rand()
+
+    return 0;
+}
+
+void PrintDistribution(const map<int, int>& numbers) { // Prints list of the random numbers 
+
+}
 
 int main()
 {
