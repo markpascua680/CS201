@@ -37,8 +37,22 @@ void printItems(std::map<std::string, Record> items) { // Prints item options to
     }
 }
 
+int selectOption() { // Displays user's options
+    cout << "\nSelect an option:\n";
+    cout << "Enter 1 to add item to cart" << endl;
+    cout << "Enter 2 to remove item from cart" << endl;
+    cout << "Enter 3 to view cart" << endl;
+    cout << "Enter 4 to view total and checkout" << endl;
+    
+    int opt = 0; // User's option
+    while (opt != 1 && opt != 2 && opt != 3 && opt != 4) {
+        std::cin >> opt;
+    }
+    return opt;
+}
+
 void main() {
     cout << "~~~~~Welcome to Wal-Meyers~~~~~\n" << endl;
     printItems(items);
-
+    selectOption();
 }
