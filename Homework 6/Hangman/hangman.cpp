@@ -39,10 +39,12 @@ bool allLettersFound(vector<string>& answer, vector<string>& blanks) {
     return false;
 }
 
-bool alreadyGuessed(map<int, string>& usedGuesses, string guess) {
-    if (find(usedGuesses.begin(), usedGuesses.end(), guess)) {
-
-    }
+bool alreadyGuessed(map<string, int>& usedGuesses, string guess) {
+    map<string, int>::iterator it = usedGuesses.find(guess);
+    if (it != usedGuesses.end()) {
+        return true;
+    }else
+    return false;
 }
 
 void main()
@@ -50,35 +52,34 @@ void main()
     vector<string> answer{ "m", "o", "i", "s", "t" };
     vector<string> blanks{ "_ ", "_ ", "_ ", "_ ", "_ " };
     string guess; // User guesses a letter
-    map<int, string> usedGuesses; // Stores used letters
+    map<string, int> usedGuesses; // Stores used letters
     
     int attempts = 10; // User's chances of guessing
     int flag = 0; // 0 = lose, 1 = win
-
+    cout << "~~~~~~~~~~ HANGMAN ~~~~~~~~~~" << endl;
     while (attempts != 0 && flag == 0) // User has 10 chances to guess
     {
-        cout << "~~~~~~~~~~ HANGMAN ~~~~~~~~~~" << endl;
+        
         cout << "Attempts Remaining: " << attempts << endl;
         printBlanks(blanks); // Prints the underscores of unrevealed letters
         cout << "\nGuess a letter or the answer: ";
         cin >> guess;
-        system("CLS");
 
-        /*if (alreadyGuessed(usedGuesses, guess)) {
-            cout << "You've already guessed that letter!";
+        if (alreadyGuessed(usedGuesses, guess)) {
+            cout << "You've already guessed that letter!\n" << endl;
             continue;
-        }*/
+        }
 
         if (guess.length() == 1) { // Test if input is one letter
             if (isCorrect(answer, guess)) {
                 cout << guess << " is correct!\n" << endl; // Correct if guessed right
-                usedGuesses[attempts] = guess;
+                usedGuesses[guess] = attempts;
                 attempts--;
                 revealLetter(answer, blanks, guess);
             }
             else {
                 cout << guess << " is incorrect!\n" << endl; // Incorrect if guessed wrong
-                usedGuesses[attempts] = guess;
+                usedGuesses[guess] = attempts;
                 attempts--;
             }
         }
@@ -88,7 +89,7 @@ void main()
         }
         else {
             cout << guess << " is incorrect!\n" << endl; // Incorrect if gussed wrong answer
-            usedGuesses[attempts] = guess;
+            usedGuesses[guess] = attempts;
             attempts--;
         }
         if (allLettersFound(answer, blanks)) { // Checks if all letters of the answer have been found
