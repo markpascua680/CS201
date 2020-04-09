@@ -40,7 +40,9 @@ bool allLettersFound(vector<string>& answer, vector<string>& blanks) {
 }
 
 bool alreadyGuessed(map<int, string>& usedGuesses, string guess) {
+    if (find(usedGuesses.begin(), usedGuesses.end(), guess)) {
 
+    }
 }
 
 void main()
