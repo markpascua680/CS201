@@ -44,7 +44,6 @@ void printItems(map<string, Record> items) { // Prints item options to screen
 }
 
 void printCart(map<string, Record>& cart) { // Prints the items in user's cart
-    system("CLS");
     if (cart.empty()) {
         cout << "\nYour cart is empty" << endl;
     }
@@ -78,47 +77,54 @@ void formatInput(string& input) { // Formats user strings to have first letter c
 }
 
 void addItem(map<string, Record>& cart) { // Adds item to user's cart
-    system("CLS");
     cout << "Which item do you want to add?\n" << endl;
     printItems(items);
     cout << "\nEnter the corresponding number of the item you wish to add: ";
     int addItem;
     std::cin >> addItem;
+
     if (addItem == 1) {
-        cart.insert({ "Apple", {0.75, 1} });
-        cout << "The item was added to your cart." << endl;
+        cart.insert({ "Apple", {0.75} });
+        cart["Apple"].units++;
+        cout << "Apple was added to your cart." << endl;
     }
     else if (addItem == 2) {
-        cart.insert({ "Milk",  {8.50, 1} });
-        cout << "The item was added to your cart." << endl;
+        cart.insert({ "Milk",  {8.50} });
+        cart["Milk"].units++;
+        cout << "Milk was added to your cart." << endl;
     }
     else if (addItem == 3) {
-        cart.insert({ "Shampoo", {6.50, 1} });
-        cout << "The item was added to your cart." << endl;
+        cart.insert({ "Shampoo", {6.50} });
+        cart["Shampoo"].units++;
+        cout << "Shampoo was added to your cart." << endl;
     }
     else if (addItem == 4) {
-        cart.insert({ "Chocolate Bar", {1.75, 1} });
-        cout << "The item was added to your cart." << endl;
+        cart.insert({ "Chocolate Bar", {1.75} });
+        cart["Chocolate Bar"].units++;
+        cout << "Chocolate Bar was added to your cart." << endl;
     }
     else if (addItem == 5) {
-        cart.insert({ "T-Shirt", {5.00, 1} });
-        cout << "The item was added to your cart." << endl;
+        cart.insert({ "T-Shirt", {5.00} });
+        cart["T-Shirt"].units++;
+        cout << "T-Shirt was added to your cart." << endl;
     }
     else
-        cout << "Item not found" << endl;
+        cout << "Item not found or invalid number was entered" << endl;
 }
 
 void removeItem(map<string, Record>& cart) {
-    system("CLS");
     printCart(cart);
-    cout << "Which item do you want to remove?" << endl;
+    cout << "Which item do you want to remove?\nEnter the item name" << endl;
     string removeItem;
     std::cin >> removeItem;
     formatInput(removeItem);
     map<string, Record>::iterator it = cart.find(removeItem);
     if (it != cart.end())
     {
-        cart.erase(removeItem);
+        cart[removeItem].units--;
+        if (cart[removeItem].units == 0) {
+            cart.erase(removeItem);
+        }
         cout << "The item has been removed" << endl;
     }
     else
@@ -152,11 +158,11 @@ int main() {
         }
         if (option == '3')
         {
-
+            printCart(cart);
         }
         if (option == '4')
         {
-            stop = 1;
+            break;
         }
         if (option != '1' && option != '2' && option != '3' && option != '4')
         {
@@ -167,10 +173,6 @@ int main() {
         }
         printOptions();
         
-    }
-    for (auto x : cart)
-    {
-        cout << x.first << ' ' << x.second.unitPrice << endl;
     }
 
     return 0;
