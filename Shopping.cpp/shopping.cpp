@@ -7,9 +7,12 @@
 
 #include <iostream>
 #include <iomanip>
+#include <cstring>
 #include <map>
 #include <iterator>
 #include <string>
+#include <stdio.h>
+#include <ctype.h>
 #include <algorithm>
 
 using std::cout;
@@ -37,6 +40,23 @@ void printItems(map<string, Record> items) { // Prints item options to screen
     for (size_t i = 0; i < items.size(); i++) {
         cout << i+1 << ". " << it->first << ": " << '$' << std::fixed << std::setprecision(2) << it->second.unitPrice << endl;
         it++;
+    }
+}
+
+void printCart(map<string, Record>& cart) {
+    system("CLS");
+    if (cart.empty()) {
+        cout << "\nYour cart is empty" << endl;
+    }
+    else
+    cout << "\nItems currently in cart:" << endl;
+    for (auto x : cart) {
+        if (x.second.units == 1) {
+            cout << x.first << ": " << x.second.units << " unit, $"
+                << std::fixed << std::setprecision(2) << x.second.unitPrice << " each" << endl;
+        } else
+        cout << x.first << ": " << x.second.units << " units, $" 
+            << std::fixed << std::setprecision(2) << x.second.unitPrice << " each" << endl;
     }
 }
 
@@ -79,7 +99,16 @@ void addItem(map<string, Record>& cart) { // Adds item to user's cart
     }
     else
         cout << "Item not found" << endl;
-    
+}
+
+void removeItem(map<string, Record>& cart) {
+    printCart(cart);
+    cout << "Which item do you want to remove?" << endl;
+    string removeItem;
+    std::cin >> removeItem;
+    tolower(removeItem[0, removeItem.size()-1]);
+    toupper(removeItem[0]);
+    cout << removeItem;
 }
 
 int main() {
@@ -100,7 +129,7 @@ int main() {
         }
         if (option == '2')
         {
-
+            removeItem(cart);
         }
         if (option == '3')
         {
