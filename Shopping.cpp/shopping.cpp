@@ -8,8 +8,10 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+#include <numeric>
 #include <map>
 #include <iterator>
+#include <vector>
 #include <string>
 #include <stdio.h>
 #include <ctype.h>
@@ -26,11 +28,11 @@ struct Record
     int units;
 };
 
-map<string, Record> items{ // Stores items
+map<string, Record> items{ // Stores items; MUST BE ALPHABETIZED
     {"Apple", {0.75, 1}},
+    {"Chocolate Bar", {1.75, 1}},
     {"Milk",  {8.50, 1}},
     {"Shampoo", {6.50, 1}},
-    {"Chocolate Bar", {1.75, 1}},
     {"T-Shirt", {5.00, 1}}
 };
 
@@ -89,19 +91,19 @@ void addItem(map<string, Record>& cart) { // Adds item to user's cart
         cout << "Apple was added to your cart." << endl;
     }
     else if (addItem == 2) {
+        cart.insert({ "Chocolate Bar", {1.75} });
+        cart["Chocolate Bar"].units++;
+        cout << "Chocolate Bar was added to your cart." << endl;
+    }
+    else if (addItem == 3) {
         cart.insert({ "Milk",  {8.50} });
         cart["Milk"].units++;
         cout << "Milk was added to your cart." << endl;
     }
-    else if (addItem == 3) {
+    else if (addItem == 4) {
         cart.insert({ "Shampoo", {6.50} });
         cart["Shampoo"].units++;
         cout << "Shampoo was added to your cart." << endl;
-    }
-    else if (addItem == 4) {
-        cart.insert({ "Chocolate Bar", {1.75} });
-        cart["Chocolate Bar"].units++;
-        cout << "Chocolate Bar was added to your cart." << endl;
     }
     else if (addItem == 5) {
         cart.insert({ "T-Shirt", {5.00} });
@@ -129,6 +131,16 @@ void removeItem(map<string, Record>& cart) {
     }
     else
         cout << "Item not found or was entered incorrectly" << endl;
+}
+
+double totalPrice(map<string, Record>& cart) {
+    double total = 0; // Total of current purchase
+    std::vector<double> prices;
+    for (auto x : cart) {
+        prices.push_back((x.second.unitPrice) * (x.second.units));
+    }
+    total = std::accumulate(prices.begin(), prices.end(), total);
+    return total;
 }
 
 int main() {
@@ -162,6 +174,7 @@ int main() {
         }
         if (option == '4')
         {
+            cout << "TOTAL OF PURCHASE: $" << std::fixed << std::setprecision(2) << totalPrice(cart);
             break;
         }
         if (option != '1' && option != '2' && option != '3' && option != '4')
