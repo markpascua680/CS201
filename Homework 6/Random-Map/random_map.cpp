@@ -12,58 +12,79 @@
 #include <map>
 #include <random>
 #include <cmath>
+#include <time.h>
 
-using namespace std;
-
-std::uniform_int_distribution<int> RandomBetweenU(int first, int last) { // Returns a uniform random number between 
-    std::uniform_int_distribution<int> num(first, last);             // first and last, inclusively
-    return num;
+void PrintDistribution(const std::map<int, int>& numbers) { // Prints list of the random numbers 
+    for (auto p : numbers)
+    {
+        std::cout << std::fixed << std::setprecision(1) << std::setw(2) << p.first << ' ' << std::string(p.second / 200, '*') << '\n';
+    }
 }
 
-std::normal_distribution<double> RandomBetweenN(double first, double last) { // Returns a normally distributed random number between first and last, inclusively
-    std::normal_distribution<double> num{ first, last };
-    return num;
+int RandomBetweenU(int first, int last) { // Returns a uniform random number between first and last, inclusively
+    std::random_device r;
+    std::default_random_engine e1(r());
+    std::uniform_int_distribution<int> distrib(first, last);
+
+    return distrib(r);
+}
+
+int RandomBetweenN(double first, double last) { // Returns a normally distributed random number between first and last, inclusively
+    std::random_device r;
+    std::default_random_engine e1(r());
+    std::normal_distribution<double> distrib(first, last);
+
+    return distrib(r);
 }
 
 int RandomBetween(int first, int last) { // Returns number using rand()
-    int num = (rand() * last) + first;
-    return num;
-}
-
-void PrintDistribution(const map<int, int>& numbers) { // Prints list of the random numbers 
+    std::srand(time(NULL));
+    int rand = (std::rand() % last) + first;
+    return rand;
 }
 
 int main()
 {
-    // Seed with a real random value, if available
-    random_device r;
+    std::random_device r;
+    std::uniform_int_distribution<int> distribU(1, 6);
+    std::normal_distribution<double> distribN(1, 6);
 
     // Choose a random mean between 1 and 6
-    default_random_engine e1(r());
-    uniform_int_distribution<int> uniform_dist(1, 6);
+    std::default_random_engine e1(r());
+    std::uniform_int_distribution<int> uniform_dist(1, 6);
     int mean = uniform_dist(e1);
-    cout << "Randomly chosen mean: " << mean << '\n';
+    std::cout << "Randomly chosen mean: " << mean << '\n';
 
     // Generate a normal distribution around that mean
-    seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
-    mt19937 e2(seed2);
-    normal_distribution<> normal_dist(mean, 2);
+    std::seed_seq seed2{ r(), r(), r(), r(), r(), r(), r(), r() };
+    std::mt19937 e2(seed2);
+    std::normal_distribution<> normal_dist(mean, 2);
 
-    map<int, int> hist;
-    for (int n = 0; n < 10000; n++)
+    std::cout << "RANDOM BETWEEN U GENERATED NUMBER: " << RandomBetweenU(1, 6) << std::endl;
+    std::cout << "RANDOM BETWEEN N GENERATED NUMBER: " << RandomBetweenN(1, 6) << std::endl;
+    std::cout << "RANDOM BETWEEN GENERATED NUMBER: " << RandomBetween(1, 6) << std::endl;
+    
+    std::srand(time(NULL));
+    int rand = (std::rand() % 6) + 1;
+    
+    std::map<int, int> numbersU; 
+    std::map<int, int> numbersN;
+    std::map<int, int> numbersRAND;
+    for (int n = 0; n < 10000; n++) // Makes map of uniform_int_distribution, normal_int_distribution, and rand()
     {
-        ++hist[round(normal_dist(e2))];
+        ++numbersU[uniform_dist(r)];
+        ++numbersN[normal_dist(r)];
+        ++numbersRAND[rand];
     }
 
-    cout << "Normal distribution around " << mean << ":\n";
+    std::cout << "RANDOM BETWEEN UNIFORM GENERATED HISTOGRAM: " << std::endl;
+    PrintDistribution(numbersU);
 
-    for (auto p : hist)
-    {
-        cout << fixed << setprecision(1) << setw(2) << p.first << ' ' << string(p.second / 200, '*') << '\n';
-    }
+    std::cout << "RANDOM BETWEEN NORMAL GENERATED HISTOGRAM: " << std::endl;
+    PrintDistribution(numbersN);
 
-    // Uniform int distribution
-    cout << "\n\n" << RandomBetweenU(1, 6);
+    std::cout << "RAND() GENERATED HISTOGRAM: " << std::endl;
+    PrintDistribution(numbersRAND);
 
     return 0;
 }
