@@ -72,5 +72,6 @@ struct Pokemon
 Pokemon pSelect(int id);
 vector<Attacks> makeMoveSet(int id);
 Pokemon choosePoke();
+void decideTurn(Pokemon pPokemon, Pokemon cPokemon);
 
 #endif

@@ -2,10 +2,18 @@
    Jay-Mark Pascua
    CS 201
    03/22/2020
-   Executes an attack
+   Executes an attack and manages turns
 */
 
 #include "Pokemon.h"
+
+void decideTurn(Pokemon pPokemon, Pokemon cPokemon) {
+    if (pPokemon.speed > cPokemon.speed) {
+        playerTurn();
+    }
+    else
+        cpuTurn();
+}
 
 double damageCalculator() // Calculates damage of attacks
 {
@@ -16,3 +24,11 @@ double damageCalculator() // Calculates damage of attacks
     return 0.0;
 }
 
+
+void playerTurn() {
+
+}
+
+void cpuTurn() {
+
+}
