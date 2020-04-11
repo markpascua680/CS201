@@ -18,6 +18,8 @@
 #include <stdio.h>
 #include <ctime>
 #include <cstdlib>
+#include <random>
+#include <math.h>
 #include <Windows.h>
 
 using namespace std;
@@ -39,9 +41,14 @@ public:
         _accuracy = accuracy;
         _pp = pp;
       }
-
     double getPower() {
         return _power;
+    }
+    string getName() {
+        return _name;
+    }
+    string getType() {
+        return _type;
     }
 
 private:
@@ -66,12 +73,13 @@ struct Pokemon
     double spAtk;
     double spDef;
     double speed;
+    double accuracy;
 };
 
 // Functions
 Pokemon pSelect(int id);
 vector<Attacks> makeMoveSet(int id);
 Pokemon choosePoke();
-void decideTurn(Pokemon pPokemon, Pokemon cPokemon);
+void decideTurn(Pokemon& pPokemon, Pokemon& cPokemon);
 
 #endif

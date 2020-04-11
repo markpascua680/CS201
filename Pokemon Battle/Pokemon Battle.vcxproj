@@ -140,7 +140,7 @@
   <ItemGroup>
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="PokemonSelect.cpp" />
-    <ClCompile Include="ExecuteMove.cpp" />
+    <ClCompile Include="BattleLoop.cpp" />
     <ClCompile Include="Attacks.cpp" />
     <ClCompile Include="PlayerInputs.cpp" />
   </ItemGroup>

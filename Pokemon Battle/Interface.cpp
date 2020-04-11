@@ -34,10 +34,11 @@ _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
     cout << "\nYour opponent is " << cPokemon.name << '!';
     cout << "\n\n";
 
+
     system("PAUSE");
     system("CLS");
 
-
+    decideTurn(pPokemon, cPokemon); // Decides who goes first and begins battle loop in ExecuteMove.cpp
 
     return 0;
 }

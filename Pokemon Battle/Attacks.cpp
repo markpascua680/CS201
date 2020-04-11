@@ -10,7 +10,7 @@
 ///// Offensive Moves /////
     // Physical Moves - Uses the Pokemon's atk stats and defending Pokemon's def stat
         // Normal Attacks
-Attacks QuickAttack("Quick Attack", "Normal", "Physical", 40, 100, 30);
+Attacks QuickAttack("Quick Attack", "Normal", "Physical", 40, 100, 30); // (moveName, moveType, moveDamageType, Power, Accuracy, PP)
 Attacks Tackle("Tackle", "Normal", "Physical", 40, 100, 35);
 Attacks Scratch("Scratch", "Normal", "Physical", 40, 100, 35);
         // Grass Attacks
