@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <ctime>
 #include <cstdlib>
+#include <Windows.h>
 
 using namespace std;
 
@@ -70,5 +71,6 @@ struct Pokemon
 // Functions
 Pokemon pSelect(int id);
 vector<Attacks> makeMoveSet(int id);
+Pokemon choosePoke();
 
 #endif

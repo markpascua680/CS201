@@ -24,22 +24,11 @@ _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
         \_.-'       |__|    `-._ |              '-.|     '-.| |   |
                                 `'                            '-._|)" << endl;
 
-
     cout << "Choose your Pokemon:\n";
     cout << "[1] Bulbasaur\n[2] Charmander\n[3] Squirtle\n[4] Pikachu\n[5] Bidoof" << endl;
-    cout << "Enter a number: ";
-    
-    
-    int id;
-    while (true) { // User has to input int between 1-5
-        cin >> id;
-        if (id <= 5 && id >= 1) {
-            break;
-        }
-    }
+    cout << "Press a number key" << endl;
 
-    Pokemon pPokemon = pSelect(id); // Player's Pokemon
-    cout << "\nYou chose " << pPokemon.name << '!' << endl;
+    Pokemon pPokemon = choosePoke(); // Player's Pokemon
 
     Pokemon cPokemon =  pSelect((rand() % 5) + 1); // Opponent's Pokemon
     cout << "\nYour opponent is " << cPokemon.name << '!';

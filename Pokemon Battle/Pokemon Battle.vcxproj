@@ -142,6 +142,7 @@
     <ClCompile Include="PokemonSelect.cpp" />
     <ClCompile Include="ExecuteMove.cpp" />
     <ClCompile Include="Attacks.cpp" />
+    <ClCompile Include="PlayerInputs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon.h" />

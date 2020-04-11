@@ -65,7 +65,6 @@ int main()
     std::cout << "RANDOM BETWEEN GENERATED NUMBER: " << RandomBetween(1, 6) << std::endl;
     
     std::srand(time(NULL));
-    int rand = (std::rand() % 6) + 1;
     
     std::map<int, int> numbersU; 
     std::map<int, int> numbersN;
@@ -73,8 +72,8 @@ int main()
     for (int n = 0; n < 10000; n++) // Makes map of uniform_int_distribution, normal_int_distribution, and rand()
     {
         ++numbersU[uniform_dist(r)];
-        ++numbersN[normal_dist(r)];
-        ++numbersRAND[rand];
+        ++numbersN[normal_dist(e2)];
+        ++numbersRAND[(std::rand() % 6) + 1];
     }
 
     std::cout << "RANDOM BETWEEN UNIFORM GENERATED HISTOGRAM: " << std::endl;
