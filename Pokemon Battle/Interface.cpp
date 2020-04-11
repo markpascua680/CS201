@@ -38,7 +38,7 @@ _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
     system("PAUSE");
     system("CLS");
 
-    decideTurn(pPokemon, cPokemon); // Decides who goes first and begins battle loop in ExecuteMove.cpp
+    decideTurn(pPokemon, cPokemon); // Decides who goes first and begins battle loop in BattleLoop.cpp
 
     return 0;
 }

@@ -26,20 +26,21 @@ using namespace std;
 
 class Attacks {
 public:
+    int pp;
     Attacks(
         string name,        // Name of attack
         string type,        // Grass, Fire, Water, etc.
         string category,    // Physical, Special, Status effect, etc.
         double power,       // Base damage of the attack
         double accuracy,    // Chance of hitting attack
-        int pp              // Power Points; how many times it can be used in battle
+        int pp1              // Power Points; how many times it can be used in battle
     ) {
         _name = name;
         _type = type;
         _category = category;
         _power = power;
         _accuracy = accuracy;
-        _pp = pp;
+        _pp, pp = pp1;
       }
     double getPower() {
         return _power;

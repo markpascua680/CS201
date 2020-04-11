@@ -44,6 +44,7 @@ void determineMove(Pokemon& attacker, Pokemon& defender, int move) { // Determin
 
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies the status to pokemon
     string status = attacker.attack[move].getName();
+    attacker.attack[move].pp -= 1;
     if (status == "Growth") { // Raises user's attack and special attack by 10%
         attacker.atk += attacker.atk * 0.1;
         attacker.spAtk += attacker.spAtk * 0.1;
@@ -62,8 +63,8 @@ void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies 
     }
 }
 
-void offensiveMove(Pokemon& pokemon, Pokemon& defender, int move) {
-
+void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
+    attacker.attack[move].pp -= 1;
 }
 
 double damageCalculator() // Calculates damage of attacks
@@ -85,9 +86,9 @@ uniform_int_distribution<int> distrib(0, 3); // Opponent uses a random ability
 void cpuTurn() { // Computer's turn to attack
     switch (distrib(r))
     {
-    case 0: determineMove(tempCpuPokemon, tempPlayerPokemon, 1); // CPU uses 1st ability
-    case 1: determineMove(tempCpuPokemon, tempPlayerPokemon, 2);
-    case 2: determineMove(tempCpuPokemon, tempPlayerPokemon, 3);
-    case 3: determineMove(tempCpuPokemon, tempPlayerPokemon, 4);
+    case 0: determineMove(tempCpuPokemon, tempPlayerPokemon, 0); // CPU uses 1st ability
+    case 1: determineMove(tempCpuPokemon, tempPlayerPokemon, 1);
+    case 2: determineMove(tempCpuPokemon, tempPlayerPokemon, 2);
+    case 3: determineMove(tempCpuPokemon, tempPlayerPokemon, 3);
     }
 }
