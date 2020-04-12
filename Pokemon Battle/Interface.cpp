@@ -9,8 +9,6 @@
 
 int main()
 {
-    srand((unsigned)time(0)); // Generates random number
-    
     cout << R"(                                  ,'\
     _.----.        ____         ,'  _\   ___    ___     ____
 _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
@@ -30,7 +28,9 @@ _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
 
     Pokemon pPokemon = choosePoke(); // Player's Pokemon
 
-    Pokemon cPokemon =  pSelect((rand() % 5) + 1); // Opponent's Pokemon
+    random_device r;
+    uniform_int_distribution<int> random(1, 5);
+    Pokemon cPokemon =  pSelect(random(r)); // Opponent's Pokemon
     cout << "\nYour opponent is " << cPokemon.name << '!';
     cout << "\n\n";
 

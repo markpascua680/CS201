@@ -45,25 +45,35 @@ void determineMove(Pokemon& attacker, Pokemon& defender, int move) { // Determin
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies the status to pokemon
     string status = attacker.attack[move].getName();
     attacker.attack[move].pp -= 1;
+
+    cout << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
+
     if (status == "Growth") { // Raises user's attack and special attack by 10%
         attacker.atk += attacker.atk * 0.1;
         attacker.spAtk += attacker.spAtk * 0.1;
+        cout << "Its attack and special attack rose!" << endl;
     }
     else if (status == "Defense Curl") { // Raises user's defense by 10%
         attacker.def += attacker.def * 0.1;
+        cout << "Its defense rose!" << endl;
     }
     else if (status == "Smokescreen") { // Lowers target's accuracy by 10%
         defender.accuracy -= defender.accuracy * 0.1;
+        cout << defender.name << "'s accuracy fell!" << endl;
     }
     else if (status == "Tail Whip") { // Lowers target's defense by 10%
         defender.def -= defender.def * 0.1;
+        cout << defender.name << "'s defense fell!" << endl;
     }
     else if (status == "Play Nice") { // Lowers target's attack by 10%
         defender.atk -= defender.atk * 0.1;
+        cout << defender.name << "'s attack fell!" << endl;
     }
 }
 
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
+    attacker.attack[move].getPower();
+    cout << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
     attacker.attack[move].pp -= 1;
 }
 
@@ -82,13 +92,22 @@ void playerTurn() {
 }
 
 random_device r;
-uniform_int_distribution<int> distrib(0, 3); // Opponent uses a random ability
+uniform_int_distribution<int> random(0, 3); // Opponent uses a random ability
 void cpuTurn() { // Computer's turn to attack
-    switch (distrib(r))
+    switch (random(r))
     {
-    case 0: determineMove(tempCpuPokemon, tempPlayerPokemon, 0); // CPU uses 1st ability
-    case 1: determineMove(tempCpuPokemon, tempPlayerPokemon, 1);
-    case 2: determineMove(tempCpuPokemon, tempPlayerPokemon, 2);
-    case 3: determineMove(tempCpuPokemon, tempPlayerPokemon, 3);
+    case 0: cout << "Opponent's "; 
+        determineMove(tempCpuPokemon, tempPlayerPokemon, 0); // What kind of move is used is determined and then passed to 
+        break;                                               // defensiveMove or offensiveMove functions
+    case 1: cout << "Opponent's "; 
+        determineMove(tempCpuPokemon, tempPlayerPokemon, 1);
+        break;
+    case 2: cout << "Opponent's "; 
+        determineMove(tempCpuPokemon, tempPlayerPokemon, 2);
+        break;
+    case 3: cout << "Opponent's "; 
+        determineMove(tempCpuPokemon, tempPlayerPokemon, 3);
+        break;
     }
+    playerTurn();
 }
