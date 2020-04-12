@@ -20,6 +20,7 @@
 #include <cstdlib>
 #include <random>
 #include <math.h>
+#include <cmath>
 #include <Windows.h>
 
 using namespace std;
@@ -81,9 +82,12 @@ struct Pokemon
 };
 
 // Functions
-Pokemon pSelect(int id);
-vector<Attacks> makeMoveSet(int id);
-Pokemon choosePoke();
-void decideTurn(Pokemon& pPokemon, Pokemon& cPokemon);
+Pokemon pSelect(int id); // Randomly selects opponent's pokemon
+vector<Attacks> makeMoveSet(int id); // Creates movesets for the pokemon
+Pokemon choosePoke(); // Player chooses a pokemon
+void decideTurn(Pokemon& pPokemon, Pokemon& cPokemon); // Decides who goes first based on pokemon's speed
+void displayOptions(); // Displays player's options during turn
+void displayAttacks(Pokemon& pPokemon); // Displays player's pokemon attacks
+int selectOption(); // Returns the number of the key pressed by player
 
 #endif

@@ -11,9 +11,12 @@ void cpuTurn();
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move);
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move);
 int damageCalculator(int p, int a, int d);
+double damageMultiplier(Pokemon& a, Pokemon& d, int move);
 
 Pokemon tempPlayerPokemon; // Temporary copy of pokemon stats to allow modification only in battle
 Pokemon tempCpuPokemon;
+
+
 
 void getStats(Pokemon pokemon) {
     cout << pokemon.hp;
@@ -26,6 +29,8 @@ void getStats(Pokemon pokemon) {
     cout << pokemon.accuracy << endl;*/
 }
 
+
+
 void decideTurn(Pokemon& pPokemon, Pokemon& cPokemon) { // Decides who goes first
     tempPlayerPokemon = pPokemon; // Assigns temporary copy of pokemon stats
     tempCpuPokemon = cPokemon;
@@ -37,6 +42,8 @@ void decideTurn(Pokemon& pPokemon, Pokemon& cPokemon) { // Decides who goes firs
     }
 }
 
+
+
 void determineMove(Pokemon& attacker, Pokemon& defender, int move) { // Determines if move is defensive or offensive
     if (attacker.attack[move].getPower() == 0) { // Test if move is defensive, otherwise it's offensive
         defensiveMove(attacker, defender, move);
@@ -44,6 +51,8 @@ void determineMove(Pokemon& attacker, Pokemon& defender, int move) { // Determin
     else
         offensiveMove(attacker, defender, move);
 }
+
+
 
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies the status to pokemon
     string status = attacker.attack[move].getName();
@@ -74,8 +83,9 @@ void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies 
     }
 }
 
+
+
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
-    getStats(defender);
     int power = attacker.attack[move].getPower();
     int atk;
     int def;
@@ -89,9 +99,76 @@ void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
     }
     attacker.attack[move].pp -= 1;
     cout << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
-    defender.hp -= damageCalculator(power, atk, def);
-    getStats(defender);
+    int damage = (int)round(damageCalculator(power, atk, def) * damageMultiplier(attacker, defender, move));
 }
+
+
+
+double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreases damage total based on the attack's type and defender's type
+    string attackType = a.attack[move].getType(); 
+    string defenderType = d.type;
+    if (attackType == "Normal") { // Normal attacks against other types
+        return 1;
+    }
+    else if (attackType == "Grass") { // Grass attacks against other types
+        if (defenderType == "Water") {
+            cout << "It's super effective!" << endl;
+            return 2;
+        }
+        else if (defenderType == "Grass" || defenderType == "Fire") { 
+            cout << "It's not very effective..." << endl;
+            return 0.5;
+        }
+        else
+            return 1;
+    }
+    else if (attackType == "Fire") { // Fire attacks against other types
+        if (defenderType == "Grass") {
+            cout << "It's super effective!" << endl;
+            return 2;
+        }
+        else if (defenderType == "Fire") {
+            cout << "It's not very effective..." << endl;
+            return 0.5;
+        }
+        else
+            return 1;
+    }
+    else if (attackType == "Water") { // Water attacks against other types
+        if (defenderType == "Fire") {
+            cout << "It's super effective!" << endl;
+            return 2;
+        }
+        else if (defenderType == "Water" || defenderType == "Grass") {
+            cout << "It's not very effective..." << endl;
+            return 0.5;
+        }
+        else
+            return 1;
+    }
+    else if (attackType == "Electric") {
+        if (defenderType == "Water") {
+            cout << "It's super effective!" << endl;
+            return 2;
+        }
+        else if (defenderType == "Electric" || defenderType == "Grass") {
+            cout << "It's not very effective..." << endl;
+            return 0.5;
+        }
+        else
+            return 1;
+    }
+    else if (attackType == "Rock") {
+        if (defenderType == "Fire") {
+            cout << "It's super effective!" << endl;
+            return 2;
+        }
+        else
+            return 1;
+    }
+}
+
+
 
 int damageCalculator(int p, int a, int d) // Calculates damage of attacks
 {
@@ -99,16 +176,26 @@ int damageCalculator(int p, int a, int d) // Calculates damage of attacks
     damage *= 2.08 * p;    // d = Defender's defense/special defense stat
     damage /= 50;          // p = The attack's base power
     damage += 2;
-    cout << "DOUBLE DMG: " << damage << endl;
-    cout << "POWER: " << p << "\tATK: " << a << "\tDEF: " << d << endl;
-    cout << "DAMAGE: " << (int)damage << endl;
+    damage = round(damage);
     return (int)damage;
 }
 
 
-void playerTurn() {
 
+void playerTurn() { // User can attack or check stats of their own pokemon
+    cout << "What will you do?" << endl;
+    bool stop = true; // Stops user input loop
+
+    displayOptions();
+    if (selectOption() == 1) {
+        displayAttacks(tempPlayerPokemon);
+    }
+    else if (selectOption() == 2) {
+        getStats(tempPlayerPokemon);
+    }
 }
+
+
 
 random_device r;
 uniform_int_distribution<int> random(0, 3); // Opponent uses a random ability
