@@ -28,7 +28,7 @@ Pokemon pSelect(int id)
         return Pikachu;
     }
     else {
-        Pokemon Bidoof{ "Bidoof", "Normal", makeMoveSet(id), 15, 59, 45, 40, 35, 40, 31, 100 };
+        Pokemon Bidoof{ "Bidoof", "Normal", makeMoveSet(id), 15, 49, 45, 40, 35, 40, 31, 100 };
         return Bidoof;
     }
     

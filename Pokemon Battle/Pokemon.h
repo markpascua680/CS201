@@ -31,8 +31,8 @@ public:
         string name,        // Name of attack
         string type,        // Grass, Fire, Water, etc.
         string category,    // Physical, Special, Status effect, etc.
-        double power,       // Base damage of the attack
-        double accuracy,    // Chance of hitting attack
+        int power,       // Base damage of the attack
+        int accuracy,    // Chance of hitting attack
         int pp1              // Power Points; how many times it can be used in battle
     ) {
         _name = name;
@@ -42,7 +42,7 @@ public:
         _accuracy = accuracy;
         _pp, pp = pp1;
       }
-    double getPower() {
+    int getPower() {
         return _power;
     }
     string getName() {
@@ -51,13 +51,16 @@ public:
     string getType() {
         return _type;
     }
+    string getCategory() {
+        return _category;
+    }
 
 private:
     string _name;
     string _type;
     string _category;
-    double _power;
-    double _accuracy;
+    int _power;
+    int _accuracy;
     int _pp;
 
 };
@@ -68,13 +71,13 @@ struct Pokemon
     string type;
     vector<Attacks> attack;
     int level;
-    double hp;
-    double atk;
-    double def;
-    double spAtk;
-    double spDef;
-    double speed;
-    double accuracy;
+    int hp;
+    int atk;
+    int def;
+    int spAtk;
+    int spDef;
+    int speed;
+    int accuracy;
 };
 
 // Functions

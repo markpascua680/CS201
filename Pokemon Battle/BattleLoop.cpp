@@ -10,17 +10,20 @@ void playerTurn();
 void cpuTurn();
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move);
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move);
+int damageCalculator(int p, int a, int d);
 
 Pokemon tempPlayerPokemon; // Temporary copy of pokemon stats to allow modification only in battle
 Pokemon tempCpuPokemon;
 
 void getStats(Pokemon pokemon) {
+    cout << pokemon.hp;
+    /*
     cout << pokemon.name << endl;
     cout << pokemon.atk << endl;
     cout << pokemon.def << endl;
     cout << pokemon.spAtk << endl;
     cout << pokemon.spDef << endl;
-    cout << pokemon.accuracy << endl;
+    cout << pokemon.accuracy << endl;*/
 }
 
 void decideTurn(Pokemon& pPokemon, Pokemon& cPokemon) { // Decides who goes first
@@ -49,41 +52,57 @@ void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies 
     cout << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
 
     if (status == "Growth") { // Raises user's attack and special attack by 10%
-        attacker.atk += attacker.atk * 0.1;
-        attacker.spAtk += attacker.spAtk * 0.1;
+        attacker.atk += attacker.atk * (int)0.1;
+        attacker.spAtk += attacker.spAtk * (int)0.1;
         cout << "Its attack and special attack rose!" << endl;
     }
     else if (status == "Defense Curl") { // Raises user's defense by 10%
-        attacker.def += attacker.def * 0.1;
+        attacker.def += attacker.def * (int)0.1;
         cout << "Its defense rose!" << endl;
     }
     else if (status == "Smokescreen") { // Lowers target's accuracy by 10%
-        defender.accuracy -= defender.accuracy * 0.1;
+        defender.accuracy -= defender.accuracy * (int)0.1;
         cout << defender.name << "'s accuracy fell!" << endl;
     }
     else if (status == "Tail Whip") { // Lowers target's defense by 10%
-        defender.def -= defender.def * 0.1;
+        defender.def -= defender.def * (int)0.1;
         cout << defender.name << "'s defense fell!" << endl;
     }
     else if (status == "Play Nice") { // Lowers target's attack by 10%
-        defender.atk -= defender.atk * 0.1;
+        defender.atk -= defender.atk * (int)0.1;
         cout << defender.name << "'s attack fell!" << endl;
     }
 }
 
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
-    attacker.attack[move].getPower();
-    cout << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
+    getStats(defender);
+    int power = attacker.attack[move].getPower();
+    int atk;
+    int def;
+    if (attacker.attack[move].getCategory() == "Physical") { // If attack is physical, use attacker's atk stat and defender's def stat
+        atk = attacker.atk;
+        def = defender.def;
+    }
+    else {
+        atk = attacker.spAtk;
+        def = defender.spDef;
+    }
     attacker.attack[move].pp -= 1;
+    cout << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
+    defender.hp -= damageCalculator(power, atk, def);
+    getStats(defender);
 }
 
-double damageCalculator() // Calculates damage of attacks
+int damageCalculator(int p, int a, int d) // Calculates damage of attacks
 {
-    // p = The attack's base power
-    // a = Attacker's attack/special attack stat
-    // d = Defender's defense/special defense stat
-    //    double damage = (((0.4 / 5) * p * a / d) / 50) + 2;
-    return 0.0;
+    double damage = a / d; // a = Attacker's attack/special attack stat
+    damage *= 2.08 * p;    // d = Defender's defense/special defense stat
+    damage /= 50;          // p = The attack's base power
+    damage += 2;
+    cout << "DOUBLE DMG: " << damage << endl;
+    cout << "POWER: " << p << "\tATK: " << a << "\tDEF: " << d << endl;
+    cout << "DAMAGE: " << (int)damage << endl;
+    return (int)damage;
 }
 
 
