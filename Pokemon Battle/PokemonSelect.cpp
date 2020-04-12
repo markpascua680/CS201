@@ -7,6 +7,37 @@
 
 #include "Pokemon.h"
 
+Pokemon choosePoke() {
+    while (true) { // Player chooses a pokemon
+        if (GetKeyState('1') < 0) {
+            Pokemon pPokemon = pSelect(1);
+            cout << "\nYou chose " << pPokemon.name << '!' << endl;
+            return pPokemon;
+        }
+        if (GetKeyState('2') < 0) {
+            Pokemon pPokemon = pSelect(2);
+            cout << "\nYou chose " << pPokemon.name << '!' << endl;
+            return pPokemon;
+        }
+        if (GetKeyState('3') < 0) {
+            Pokemon pPokemon = pSelect(3);
+            cout << "\nYou chose " << pPokemon.name << '!' << endl;
+            return pPokemon;
+        }
+        if (GetKeyState('4') < 0) {
+            Pokemon pPokemon = pSelect(4);
+            cout << "\nYou chose " << pPokemon.name << '!' << endl;
+            return pPokemon;
+        }
+        if (GetKeyState('5') < 0) {
+            Pokemon pPokemon = pSelect(5);
+            cout << "\nYou chose " << pPokemon.name << '!' << endl;
+            return pPokemon;
+        }
+    }
+}
+
+
 // Pokemon, type, moves, level, hp, atk, def, spAtk, spDef, speed, accuracy
 Pokemon pSelect(int id)
 {

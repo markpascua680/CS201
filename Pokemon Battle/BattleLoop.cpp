@@ -105,7 +105,7 @@ void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
 
 
 double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreases damage total based on the attack's type and defender's type
-    string attackType = a.attack[move].getType(); 
+    string attackType = a.attack[move].getType();
     string defenderType = d.type;
     if (attackType == "Normal") { // Normal attacks against other types
         return 1;
@@ -183,16 +183,26 @@ int damageCalculator(int p, int a, int d) // Calculates damage of attacks
 
 
 void playerTurn() { // User can attack or check stats of their own pokemon
-    cout << "What will you do?" << endl;
-    bool stop = true; // Stops user input loop
-
-    displayOptions();
-    if (selectOption() == 1) {
-        displayAttacks(tempPlayerPokemon);
+    bool go = true;
+    while(go) {
+        cout << "What will you do?" << endl;
+        displayOptions();
+        if (selectOption() == 0) {
+            displayAttacks(tempPlayerPokemon);
+            int option = selectOption();
+            if (option != 4) {
+                determineMove(tempPlayerPokemon, tempCpuPokemon, option);
+                go = false;
+            }
+            else if(option == 4)
+                continue;
+        }
+        else if (selectOption() == 1) {
+            getStats(tempPlayerPokemon);
+        }
+        break;
     }
-    else if (selectOption() == 2) {
-        getStats(tempPlayerPokemon);
-    }
+    cpuTurn();
 }
 
 
