@@ -73,22 +73,35 @@ struct Pokemon
     vector<Attacks> attack;
     int level;
     int hp;
-    int atk;
-    int def;
-    int spAtk;
-    int spDef;
-    int speed;
-    int accuracy;
+    double atk;
+    double def;
+    double spAtk;
+    double spDef;
+    double speed;
+    double accuracy;
 };
 
 // Functions
 Pokemon pSelect(int id); // Randomly selects opponent's pokemon
-vector<Attacks> makeMoveSet(int id); // Creates movesets for the pokemon
+
 Pokemon choosePoke(); // Player chooses a pokemon
+
+vector<Attacks> makeMoveSet(int id); // Creates movesets for the pokemon
+
 void decideTurn(Pokemon& pPokemon, Pokemon& cPokemon); // Decides who goes first based on pokemon's speed
+
+void clearScreen(Pokemon& p, Pokemon& tempP, Pokemon& c, Pokemon& tempC); // Clears the screen and displays HUD
+
+void printBoxTop(); // Prints top of box wall
+
+void printBoxBottom(); // Prints bottom of box wall
+
 void displayOptions(); // Displays player's options during turn
+
 void displayAttacks(Pokemon& pPokemon); // Displays player's pokemon attacks
+
 void displayHealth(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy); // Displays pokemon's remaining health and base health
+
 int selectOption(); // Returns the number of the key pressed by player
 
 #endif

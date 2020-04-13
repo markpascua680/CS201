@@ -10,7 +10,7 @@ void playerTurn();
 void cpuTurn();
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move);
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move);
-int damageCalculator(int p, int a, int d);
+double damageCalculator(double p, double a, double d);
 double damageMultiplier(Pokemon& a, Pokemon& d, int move);
 void lowerHealth(Pokemon& defender, int damage);
 bool isFainted(Pokemon& player, Pokemon& opponent);
@@ -25,12 +25,15 @@ Pokemon tempCpuPokemon;
 
 void getStats(Pokemon pokemon) {
     cout << string(15, '\n');
-    cout << setw(5) << left << "ATK: " << setw(5) << left << pokemon.atk << endl;
-    cout << setw(5) << left << "DEF: " << setw(5) << left << pokemon.def << endl;
-    cout << setw(5) << left << "SP.ATK: " << setw(5) << left << pokemon.spAtk << endl;
-    cout << setw(5) << left << "SP.DEF: " << setw(5) << left << pokemon.spDef << endl;
-    cout << setw(5) << left << "ACC: " << setw(5) << left << pokemon.accuracy << endl;
-    Sleep(3000);
+    printBoxTop();
+    cout << endl;
+    cout << char(186) << ' ' << setw(10) << left << "ATK: " << right << pokemon.atk << endl;
+    cout << char(186) << ' ' << setw(10) << left << "DEF: " << right << pokemon.def << endl;
+    cout << char(186) << ' ' << setw(10) << left << "SP.ATK: " << right << pokemon.spAtk << endl;
+    cout << char(186) << ' ' << setw(10) << left << "SP.DEF: " << right << pokemon.spDef << endl;
+    cout << char(186) << ' ' << setw(10) << left << "ACC: " << right << pokemon.accuracy << endl;
+    printBoxBottom();
+    system("PAUSE");
 }
 
 
@@ -62,31 +65,33 @@ void determineMove(Pokemon& attacker, Pokemon& defender, int move) { // Determin
 
 
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies the status to pokemon
+    clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+    cout << string(15, '\n');
     string status = attacker.attack[move].getName();
     attacker.attack[move].pp -= 1;
-
-    cout << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
+    printBoxTop();
+    cout << '\n' << char(186) << ' ' << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
 
     if (status == "Growth") { // Raises user's attack and special attack by 10%
-        attacker.atk += attacker.atk * (int)0.2;
-        attacker.spAtk += attacker.spAtk * (int)0.2;
-        cout << "Its attack and special attack rose!" << endl;
+        attacker.atk += attacker.atk * 0.1;
+        attacker.spAtk += attacker.spAtk * 0.1;
+        cout << char(186) << ' ' << "Its attack and special attack rose!" << endl;
     }
     else if (status == "Defense Curl") { // Raises user's defense by 10%
-        attacker.def += attacker.def * (int)0.2;
-        cout << "Its defense rose!" << endl;
+        attacker.def += attacker.def * 0.1;
+        cout << char(186) << ' ' << "Its defense rose!" << endl;
     }
     else if (status == "Smokescreen") { // Lowers target's accuracy by 10%
-        defender.accuracy -= defender.accuracy * (int)0.1;
-        cout << defender.name << "'s accuracy fell!" << endl;
+        defender.accuracy -= defender.accuracy * 0.1;
+        cout << char(186) << ' ' << defender.name << "'s accuracy fell!" << endl;
     }
     else if (status == "Tail Whip") { // Lowers target's defense by 10%
-        defender.def -= defender.def * (int)0.2;
-        cout << defender.name << "'s defense fell!" << endl;
+        defender.def -= defender.def * 0.1;
+        cout << char(186) << ' ' << defender.name << "'s defense fell!" << endl;
     }
     else if (status == "Play Nice") { // Lowers target's attack by 10%
-        defender.atk -= defender.atk * (int)0.2;
-        cout << defender.name << "'s attack fell!" << endl;
+        defender.atk -= defender.atk * 0.1;
+        cout << char(186) << ' ' << defender.name << "'s attack fell!" << endl;
     }
     Sleep(3000);
 }
@@ -94,9 +99,11 @@ void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies 
 
 
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
-    int power = attacker.attack[move].getPower();
-    int atk;
-    int def;
+    clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+    cout << string(15, '\n');
+    double power = attacker.attack[move].getPower();
+    double atk;
+    double def;
     if (attacker.attack[move].getCategory() == "Physical") { // If attack is physical, use attacker's atk stat and defender's def stat
         atk = attacker.atk;
         def = defender.def;
@@ -106,8 +113,9 @@ void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
         def = defender.spDef;
     }
     attacker.attack[move].pp -= 1;
-    cout << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
-    int damage = (damageCalculator(power, atk, def) * damageMultiplier(attacker, defender, move));
+    printBoxTop();
+    cout << '\n' << char(186) << ' ' << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
+    double damage = (damageCalculator(power, atk, def) * damageMultiplier(attacker, defender, move));
     damage = (int)damage;
     lowerHealth(defender, damage);
     Sleep(3000);
@@ -134,11 +142,11 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
     }
     else if (attackType == "Grass") { // Grass attacks against other types
         if (defenderType == "Water") {
-            cout << "It's super effective!" << endl;
+            cout << char(186) << ' ' << "It's super effective!" << endl;
             return 2;
         }
         else if (defenderType == "Grass" || defenderType == "Fire") { 
-            cout << "It's not very effective..." << endl;
+            cout << char(186) << ' ' << "It's not very effective..." << endl;
             return 0.5;
         }
         else
@@ -146,11 +154,11 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
     }
     else if (attackType == "Fire") { // Fire attacks against other types
         if (defenderType == "Grass") {
-            cout << "It's super effective!" << endl;
+            cout << char(186) << ' ' << "It's super effective!" << endl;
             return 2;
         }
         else if (defenderType == "Fire") {
-            cout << "It's not very effective..." << endl;
+            cout << char(186) << ' ' << "It's not very effective..." << endl;
             return 0.5;
         }
         else
@@ -158,11 +166,11 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
     }
     else if (attackType == "Water") { // Water attacks against other types
         if (defenderType == "Fire") {
-            cout << "It's super effective!" << endl;
+            cout << char(186) << ' ' << "It's super effective!" << endl;
             return 2;
         }
         else if (defenderType == "Water" || defenderType == "Grass") {
-            cout << "It's not very effective..." << endl;
+            cout << char(186) << ' ' << "It's not very effective..." << endl;
             return 0.5;
         }
         else
@@ -170,11 +178,11 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
     }
     else if (attackType == "Electric") {
         if (defenderType == "Water") {
-            cout << "It's super effective!" << endl;
+            cout << char(186) << ' ' << "It's super effective!" << endl;
             return 2;
         }
         else if (defenderType == "Electric" || defenderType == "Grass") {
-            cout << "It's not very effective..." << endl;
+            cout << char(186) << ' ' << "It's not very effective..." << endl;
             return 0.5;
         }
         else
@@ -182,7 +190,7 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
     }
     else if (attackType == "Rock") {
         if (defenderType == "Fire") {
-            cout << "It's super effective!" << endl;
+            cout << char(186) << ' ' << "It's super effective!" << endl;
             return 2;
         }
         else
@@ -192,40 +200,42 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
 
 
 
-int damageCalculator(int p, int a, int d) // Calculates damage of attacks
+double damageCalculator(double p, double a, double d) // Calculates damage of attacks
 {
     double damage = a / d; // a = Attacker's attack/special attack stat
     damage *= 2.08 * p;    // d = Defender's defense/special defense stat
     damage /= 50;          // p = The attack's base power
     damage += 2;
     damage = round(damage);
-    return (int)damage;
+    return damage;
 }
 
 
 
 void playerTurn() { // User can attack or check stats of their own pokemon
-    system("CLS");
-    displayHealth(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
-    cout << string(15, '\n');
+    clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+    
     while(true) {
+        cout << string(15, '\n');
         displayOptions();
         if (selectOption() == 0) {
-            system("CLS");
-            displayHealth(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+            clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
             displayAttacks(tempPlayerPokemon);
             int option = selectOption();
             if (option != 4) {
                 determineMove(tempPlayerPokemon, tempCpuPokemon, option);
+                clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
                 break;
             }
             else if(option == 4)
+                system("CLS");
+                displayHealth(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
                 continue;
         }
         else if (selectOption() == 1) {
-            system("CLS");
-            displayHealth(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+            clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
             getStats(tempPlayerPokemon);
+            playerTurn();
         }
         break;
     }
@@ -241,8 +251,7 @@ void playerTurn() { // User can attack or check stats of their own pokemon
 random_device r;
 uniform_int_distribution<int> random(0, 3); // Opponent uses a random ability
 void cpuTurn() { // Computer's turn to attack
-    system("CLS");
-    displayHealth(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+    clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
     cout << string(15, '\n');
     switch (random(r))
     {
@@ -276,9 +285,12 @@ bool isFainted(Pokemon& player, Pokemon& opponent) {
 
 
 void endBattle(Pokemon& player, Pokemon& opponent) {
+    clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+    cout << string(15, '\n');
     if (player.hp == 0) {
         cout << player.name << " fainted!\nYou lost!" << endl;
     }
-    else
+    else {
         cout << opponent.name << " fainted!\nYou won!" << endl;
+    }
 }
