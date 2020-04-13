@@ -43,23 +43,23 @@ Pokemon pSelect(int id)
 {
     if (id == 1) // Can be extended to add more Pokemon
     {
-        Pokemon Bulbasaur{ "Bulbasaur", "Grass", makeMoveSet(id), 12, 45, 49, 49, 65, 65, 45, 100 };
+        Pokemon Bulbasaur{ "Bulbasaur", "Grass", makeMoveSet(id), 6, 45, 49, 49, 65, 65, 45, 100 };
         return Bulbasaur;
     }
     else if (id == 2) {
-        Pokemon Charmander{ "Charmander", "Fire", makeMoveSet(id), 14, 39, 52, 43, 60, 50, 65, 100 };
+        Pokemon Charmander{ "Charmander", "Fire", makeMoveSet(id), 7, 39, 52, 43, 60, 50, 65, 100 };
         return Charmander;
     }
     else if (id == 3) {
-        Pokemon Squirtle{ "Squirtle", "Water", makeMoveSet(id), 16, 44, 48, 65, 50, 64, 43, 100 };
+        Pokemon Squirtle{ "Squirtle", "Water", makeMoveSet(id), 8, 44, 48, 65, 50, 64, 43, 100 };
         return Squirtle;
     }
     else if (id == 4) {
-        Pokemon Pikachu{ "Pikachu", "Electric", makeMoveSet(id), 13, 35, 55, 40, 50, 50, 90, 100 };
+        Pokemon Pikachu{ "Pikachu", "Electric", makeMoveSet(id), 7, 35, 55, 40, 50, 50, 90, 100 };
         return Pikachu;
     }
     else {
-        Pokemon Bidoof{ "Bidoof", "Normal", makeMoveSet(id), 15, 49, 45, 40, 35, 40, 31, 100 };
+        Pokemon Bidoof{ "Bidoof", "Normal", makeMoveSet(id), 7, 49, 45, 40, 35, 40, 31, 100 };
         return Bidoof;
     }
     

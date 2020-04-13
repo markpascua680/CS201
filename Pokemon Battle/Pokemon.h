@@ -7,7 +7,7 @@
 
 #ifndef POKEMON_H
 #define POKEMON_H
-
+#pragma comment(lib, "winmm.lib")
 #include <iostream>
 #include <iomanip>
 #include <sstream>

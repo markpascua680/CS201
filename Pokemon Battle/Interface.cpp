@@ -9,6 +9,7 @@
 
 int main()
 {
+    PlaySound(TEXT("StartUp.wav"), NULL, SND_ASYNC);
     cout << R"(                                  ,'\
     _.----.        ____         ,'  _\   ___    ___     ____
 _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
@@ -34,6 +35,7 @@ _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
     cout << "\nYour opponent is " << cPokemon.name << '!';
     cout << "\n\n";
 
+    PlaySound(TEXT("PokemonBattle.wav"), NULL, SND_LOOP | SND_ASYNC);
 
     system("PAUSE");
     system("CLS");

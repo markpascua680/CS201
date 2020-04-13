@@ -10,7 +10,7 @@ void playerTurn();
 void cpuTurn();
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move);
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move);
-double damageCalculator(double p, double a, double d);
+double damageCalculator(Pokemon& attacker, double p, double a, double d);
 double damageMultiplier(Pokemon& a, Pokemon& d, int move);
 void lowerHealth(Pokemon& defender, int damage);
 bool isFainted(Pokemon& player, Pokemon& opponent);
@@ -115,7 +115,7 @@ void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
     attacker.attack[move].pp -= 1;
     printBoxTop();
     cout << '\n' << char(186) << ' ' << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
-    double damage = (damageCalculator(power, atk, def) * damageMultiplier(attacker, defender, move));
+    double damage = (damageCalculator(attacker, power, atk, def) * damageMultiplier(attacker, defender, move));
     damage = (int)damage;
     lowerHealth(defender, damage);
     Sleep(3000);
@@ -200,10 +200,10 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
 
 
 
-double damageCalculator(double p, double a, double d) // Calculates damage of attacks
+double damageCalculator(Pokemon& attacker, double p, double a, double d) // Calculates damage of attacks
 {
     double damage = a / d; // a = Attacker's attack/special attack stat
-    damage *= 2.08 * p;    // d = Defender's defense/special defense stat
+    damage *= (2.08 * attacker.level) * p;    // d = Defender's defense/special defense stat
     damage /= 50;          // p = The attack's base power
     damage += 2;
     damage = round(damage);
