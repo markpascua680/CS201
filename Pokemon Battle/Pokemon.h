@@ -70,7 +70,7 @@ struct Pokemon
     string name;
     string type;
     vector<Attacks> attack;
-    int level;
+    double level;
     int hp;
     double atk;
     double def;

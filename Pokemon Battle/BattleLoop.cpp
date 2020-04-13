@@ -203,9 +203,12 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
 
 double damageCalculator(Pokemon& attacker, double p, double a, double d) // Calculates damage of attacks
 {
-    double damage = a / d; // a = Attacker's attack/special attack stat
-    damage *= (2.08 * attacker.level) * p;    // d = Defender's defense/special defense stat
-    damage /= 50;          // p = The attack's base power
+    double damage = 2 * attacker.level;  // d = Defender's defense/special defense stat
+    damage /= 5;
+    damage += 2;
+    damage *= (a / d);                   // a = Attacker's attack/special attack stat
+    damage *= p;                             // p = The attack's base power
+    damage /= 50;          
     damage += 2;
     damage = round(damage);
     return damage;
@@ -287,12 +290,17 @@ bool isFainted(Pokemon& player, Pokemon& opponent) {
 
 void endBattle(Pokemon& player, Pokemon& opponent) {
     clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
-    PlaySound(TEXT("EndBattle.wav"), NULL, SND_ASYNC);
     cout << string(15, '\n');
+    printBoxTop();
+    cout << endl;
     if (player.hp == 0) {
-        cout << player.name << " fainted!\nYou lost!" << endl;
+        cout << char(186) << ' ' << player.name << " fainted!\n" << char(186) << " You lost!" << endl;
     }
     else {
-        cout << opponent.name << " fainted!\nYou won!" << endl;
+        cout << char(186) << ' ' << opponent.name << " fainted!\n" << char(186) << " You won!" << endl;
     }
+    printBoxBottom();
+    PlaySound(TEXT("EndBattle.wav"), NULL, SND_ASYNC);
+    cout << endl;
+    system("PAUSE");
 }
