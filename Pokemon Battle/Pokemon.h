@@ -88,6 +88,7 @@ Pokemon choosePoke(); // Player chooses a pokemon
 void decideTurn(Pokemon& pPokemon, Pokemon& cPokemon); // Decides who goes first based on pokemon's speed
 void displayOptions(); // Displays player's options during turn
 void displayAttacks(Pokemon& pPokemon); // Displays player's pokemon attacks
+void displayHealth(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy); // Displays pokemon's remaining health and base health
 int selectOption(); // Returns the number of the key pressed by player
 
 #endif

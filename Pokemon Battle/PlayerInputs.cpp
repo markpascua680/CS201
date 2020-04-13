@@ -28,15 +28,3 @@ int selectOption() {
         }
     }
 }
-
-void displayOptions() { // Displays player's options when it's their turn
-    cout << "[1] FIGHT\n[2] STATS\n" << endl;
-}
-
-void displayAttacks(Pokemon& p) {
-    cout << endl;
-    for (int i = 0; i < 4;i++) {
-        cout << '[' << i + 1 << "] " << setw(20) << left << p.attack[i].getName() << "PP: " << p.attack[i].pp << endl;
-    }
-    cout << "[5] BACK" << endl;
-}
