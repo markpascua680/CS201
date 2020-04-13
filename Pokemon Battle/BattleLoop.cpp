@@ -115,6 +115,7 @@ void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
     attacker.attack[move].pp -= 1;
     printBoxTop();
     cout << '\n' << char(186) << ' ' << attacker.name << " used " << attacker.attack[move].getName() << '!' << endl;
+    playSound(attacker, move);
     double damage = (damageCalculator(attacker, power, atk, def) * damageMultiplier(attacker, defender, move));
     damage = (int)damage;
     lowerHealth(defender, damage);
@@ -286,6 +287,7 @@ bool isFainted(Pokemon& player, Pokemon& opponent) {
 
 void endBattle(Pokemon& player, Pokemon& opponent) {
     clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+    PlaySound(TEXT("EndBattle.wav"), NULL, SND_ASYNC);
     cout << string(15, '\n');
     if (player.hp == 0) {
         cout << player.name << " fainted!\nYou lost!" << endl;

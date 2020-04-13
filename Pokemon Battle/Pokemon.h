@@ -16,7 +16,6 @@
 #include <vector>
 #include <stdlib.h>
 #include <stdio.h>
-#include <ctime>
 #include <cstdlib>
 #include <random>
 #include <math.h>
@@ -103,5 +102,7 @@ void displayAttacks(Pokemon& pPokemon); // Displays player's pokemon attacks
 void displayHealth(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy); // Displays pokemon's remaining health and base health
 
 int selectOption(); // Returns the number of the key pressed by player
+
+void playSound(Pokemon& p, int move); // Plays SFX
 
 #endif
