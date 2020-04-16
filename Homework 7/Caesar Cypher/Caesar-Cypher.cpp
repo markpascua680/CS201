@@ -13,6 +13,8 @@
 using std::cout;
 using std::endl;
 
+std::string cypher(std::string message, int shift);
+
 int main() {
 
     cout << "Enter a sentence to cypher (blank line to end): ";
@@ -46,11 +48,29 @@ int main() {
         std::cin >> shift;
     }
 
-    cypher(message, shift);
+    cout << "Result: " << cypher(message, shift);
 
     return 0;
 }
 
-std::string cypher(std::string message, int shift) {
+std::string cypher(std::string message, int shift) { // Cyphers the user's message
+    std::string letters = "abcdefghijklmnopqrstuvwxyz"; // Stores letters to refer to when shifting
+
+    size_t index; // Index of a letter in string letters
+    for (size_t i = 0; i < message.size(); i++) { // Goes through all letters of the message
+        index = letters.find(message[i]); // Takes a letter from message and finds it in letters; returns its index
+        if (index == -1) {
+            continue;
+        }
+        if (index + shift > letters.size() - 1) {
+            index = (index + shift) - letters.size();
+            message[i] = letters[index];
+            continue;
+        }
+        else {
+            message[i] = letters[index+shift];
+        }
+    }
+    return message;
 
 }
