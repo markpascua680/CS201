@@ -21,6 +21,7 @@
 #include <math.h>
 #include <cmath>
 #include <Windows.h>
+#include <SDL.h>
 
 using namespace std;
 

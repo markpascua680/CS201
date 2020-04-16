@@ -7,7 +7,7 @@
 
 #include "Pokemon.h"
 
-int main()
+int main(int argc, char* argv[])
 {
     PlaySound(TEXT("StartUp.wav"), NULL, SND_ASYNC);
     cout << R"(                                  ,'\
@@ -38,6 +38,7 @@ _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
     PlaySound(TEXT("PokemonBattle.wav"), NULL, SND_LOOP | SND_ASYNC);
 
     Sleep(3500);
+
     system("CLS");
 
     decideTurn(pPokemon, cPokemon); // Decides who goes first and begins battle loop in BattleLoop.cpp
