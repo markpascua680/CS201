@@ -157,6 +157,8 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="PokemonBattle.wav" />
+    <Media Include="PokemonBattleContinue1.wav" />
+    <Media Include="PokemonBattleContinue2.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

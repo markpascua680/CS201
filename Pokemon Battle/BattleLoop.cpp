@@ -257,22 +257,11 @@ uniform_int_distribution<int> random(0, 3); // Opponent uses a random ability
 void cpuTurn() { // Computer's turn to attack
     clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
     cout << string(15, '\n');
-    switch (random(r))
-    {
-    case 0: cout << "Opponent's "; 
-        determineMove(tempCpuPokemon, tempPlayerPokemon, 0); // What kind of move is used is determined and then passed to 
-        break;                                               // defensiveMove or offensiveMove functions
-    case 1: cout << "Opponent's "; 
-        determineMove(tempCpuPokemon, tempPlayerPokemon, 1);
-        break;
-    case 2: cout << "Opponent's "; 
-        determineMove(tempCpuPokemon, tempPlayerPokemon, 2);
-        break;
-    case 3: cout << "Opponent's "; 
-        determineMove(tempCpuPokemon, tempPlayerPokemon, 3);
-        break;
-    }
-    if (isFainted(tempPlayerPokemon, tempCpuPokemon)) {
+
+    cout << "Opponent's "; 
+    determineMove(tempCpuPokemon, tempPlayerPokemon, random(r));     // What kind of move is used is determined and then passed to 
+
+    if (isFainted(tempPlayerPokemon, tempCpuPokemon)) {              // defensiveMove or offensiveMove functions
         endBattle(tempPlayerPokemon, tempCpuPokemon);
     }
     else

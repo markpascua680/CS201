@@ -35,8 +35,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Media Include="PokemonBattleContinue1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="PokemonBattleContinue2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
     <Media Include="PokemonBattle.wav">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>
   <ItemGroup>
