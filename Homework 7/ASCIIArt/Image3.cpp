@@ -4,11 +4,18 @@
 // Original Author: Jonathan Metzgar
 // CS 201 course
 #include "Image3.h"
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
 
 // Image3 Constructor
 Image3::Image3(unsigned width, unsigned height) {
 	// TODO: resize the pixels array
 	// TODO: initialize the internal w and h members
+	w = width;
+	h = height;
+	pixels.resize(width * height);
 }
 
 // Return a pixel from the image
@@ -18,16 +25,27 @@ const Color3& Image3::getPixel(unsigned x, unsigned y) const {
 	// BETTER OPTION 2: return a color
 	// Hint: maybe this is already in the class?
 
+	if (y * w + x > pixels.size()) {
+		std::cout << "ERROR: Unknown pixels" << std::endl;
+		return pixels[0];
+	}
+
 	return pixels[y * w + x];
 }
 
 void Image3::setPixel(unsigned x, unsigned y, const Color3& color) {
 	// TODO: Set the pixel to the new color
+	pixels[y * w + x] = color;
 }
 
 bool Image3::savePPM(const std::string& path) const {
 	// TODO: Save the image to the disk
 	// REQUIREMENT: Use the STREAM operators for the file contents
+	std::ofstream save(path);
+	if (!save) {
+		std::cout << "Error opening file" << std::endl;
+		return false;
+	}
 	return false;
 }
 

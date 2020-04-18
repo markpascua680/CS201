@@ -15,22 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Color3.cpp">
+    <ClCompile Include="Rule30.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Image3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Color3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Image3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="parrot.ppm" />
   </ItemGroup>
 </Project>

@@ -26,21 +26,21 @@ int main() {
         std::cout << "ERROR: FILE COULD NOT BE OPENED" << std::endl;
     }
     else {
-        /*
+        
         for (int i = 0; i < 10; i++) { // Writes "Hello" 10 times in the .txt file
             file << "Hello" << std::endl;
-        }*/
+        }
     }
 
     if (!file) { // Error message if unable to write to file
         std::cout << "Error writing in file" << std::endl;
     }
-
+    
     std::vector<int> integers = numbers();
     int seed = 5;
     std::shuffle(integers.begin(), integers.end(), std::default_random_engine(5));
 
-    printIntegersToFile(integers, file);
+    printIntegersToFile(integers, file); 
 
     /*
     std::ifstream read("Hello.txt");
@@ -78,11 +78,11 @@ std::vector<int> numbers() {
 
     std::vector<int> integers;
 
-    for (int i = 1; i <= 100; i++) { // Writes "Hello" 10 times in the .txt file
-        /*file << std::setw(4) << i;
+    for (int i = 1; i <= 100; i++) { 
+        file << std::setw(4) << i;
         if (i % 10 == 0) {
             file << '\n';
-        }*/
+        }
         integers.push_back(i);
     }
     return integers;

@@ -3,10 +3,52 @@
 // Implementation for Color3 class
 // Original Author: Jonathan Metzgar
 // CS 201 course
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <iomanip>
+#include <fstream>
 #include "Color3.h"
 
 using std::setw;
+
+int main() {
+	std::ifstream read("parrot.ppm"); // Open parrot.ppm file for reading
+
+	if(!read)
+		std::cout << "File could not be opened" << std::endl;
+
+	else {
+		std::cout << "Reading from file: " << std::endl;
+
+		while (true) {
+			int num;
+			std::string line;
+			std::getline(read, line);
+			std::istringstream iss(line);
+
+			iss >> num;
+			if (!iss)
+				continue;
+
+			if (!read) {
+
+				if (read.eof())
+
+					std::cout << "Finished reading file" << std::endl;
+
+				else
+
+					std::cout << "Error occurred when reading file" << std::endl;
+
+				break;
+			}
+			std::cout << num << std::endl;
+		}
+	}
+
+	return 0;
+}
 
 // Ensure values are in the range 0 to maxvalue
 constexpr int saturate(int x, int maxvalue) {
@@ -33,7 +75,7 @@ char Color3::asciiValue() const {
 	// Use at least 16 characters, sort these from dark to light
 	// or light to dark and then map the weightedSum() to the range
 	// 0 to 15. Please pick your own characters
-	const char values[] = "ABCDEFGHIJKLMNOP";
+	const char values[] = " _,.;:({|/i1lQM0";
 	unsigned darkness = 0;
 	return values[darkness];
 }

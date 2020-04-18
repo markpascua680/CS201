@@ -59,32 +59,41 @@ std::string cypher(std::string message, int shift) { // Cyphers the user's messa
 
     char blank = ' '; // Will help test for spaces
     size_t index; // Index of a letter in string letters
+
     for (size_t i = 0; i < message.size(); i++) { // Goes through all letters of the message
         index = letters.find(message[i]); // Takes a letter from message and finds it in letters; returns its index
+
         if (message[i] == blank)
             continue;
+
         if (index == std::string::npos) { // If message[i] isn't found in string letters
             index = lettersCapital.find(message[i]); // Try to find it in string lettersCapital
+
             if (index + shift > lettersCapital.size() - 1) { // If shift > string range, returns back to start of string
                 index = (index + shift) - lettersCapital.size();
                 message[i] = lettersCapital[index];
                 continue;
+
             }else if (index == std::string::npos) { // If the character isn't found in string lettersCapital, continue
                 continue;
             }
+
             else { // Else if it is found, change the letter in message
                 message[i] = lettersCapital[index + shift];
                 continue;
             }
+
             if (index == std::string::npos) {
                 continue;
             }
         }
+
         if (index + shift > letters.size() - 1) { // If shift > string range, returns back to start of string
             index = (index + shift) - letters.size();
             message[i] = letters[index];
             continue;
         }
+
         else {
             message[i] = letters[index + shift];
         }
