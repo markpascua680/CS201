@@ -46,6 +46,8 @@ bool Image3::savePPM(const std::string& path) const {
 		std::cout << "Error opening file" << std::endl;
 		return false;
 	}
+	save << *this;
+	save.close();
 	return false;
 }
 
@@ -57,6 +59,12 @@ bool Image3::loadPPM(const std::string& path) {
 		std::cout << "Error loading file" << std::endl;
 		return false;
 	}
+	try {
+		load >> *this;
+	}
+	catch (...) {
+		return false;
+	}
 	return true;
 }
 
@@ -65,7 +73,7 @@ void Image3::printASCII(std::ostream& ostr) const {
 	for (size_t i = 0; i < pixels.size(); i++) {
 		ostr << pixels[i].asciiValue();
 		if (i != 0 && i + 1 % w == 0) {
-			ostr << std::endl;
+			ostr << '\n';
 		}
 	}
 }
@@ -77,8 +85,8 @@ std::ostream& operator<<(std::ostream& ostr, const Image3& image) {
 	// ASSUME FORMAT WILL BE GOOD
 	ostr << "P3\n" << image.w << ' ' << image.h << "\n255";
 
-	for (Color3 px : image.pixels) {
-		ostr << '\n' << px;
+	for (Color3 x : image.pixels) {
+		ostr << '\n' << x;
 	}
 
 	return ostr;
@@ -94,6 +102,7 @@ std::istream& operator>>(std::istream& istr, Image3& image) {
 		throw;
 	}
 	image.pixels.clear();
+
 	bool width = false;
 	bool height = false;
 	bool colorSpace = false;

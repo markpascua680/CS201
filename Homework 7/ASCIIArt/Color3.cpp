@@ -14,10 +14,11 @@
 using std::setw;
 
 int main() {
-	Image3 image(3, 2);
+	Image3 image(0, 0);
 	if (!image.loadPPM("parrot.ppm")) {
 		std::cout << "Error opening file" << std::endl;
 	}
+	else
 	image.printASCII(std::cout);
 
 	return 0;
@@ -41,7 +42,7 @@ Color3::Color3(int R, int G, int B) {
 int Color3::weightedSum() const {
 	// Implement Y = 0.2126R + 0.7152G + 0.0722B
 	// Ensure values are inside the range 0 to 255
-	int Y = saturate((0.2126 * r) + (0.7152 * g) + (0.0722 * b), 255);
+	int Y = saturate(0.2126 * r + 0.7152 * g + 0.0722 * b, 255);
 	return Y;
 }
 
@@ -49,8 +50,8 @@ char Color3::asciiValue() const {
 	// Use at least 16 characters, sort these from dark to light
 	// or light to dark and then map the weightedSum() to the range
 	// 0 to 15. Please pick your own characters
-	const char values[] = " _,.;:({|/i1lQM0";
-	unsigned darkness = weightedSum() / 15 % 15;
+	const char values[] = " _,.;:>({|/i1lQ%";
+	unsigned darkness = 14 - (weightedSum() / 15) % 15;
 	return values[darkness];
 }
 
