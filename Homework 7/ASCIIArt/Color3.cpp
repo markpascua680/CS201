@@ -9,42 +9,18 @@
 #include <iomanip>
 #include <fstream>
 #include "Color3.h"
+#include "Image3.h"
 
 using std::setw;
 
 int main() {
-	std::ifstream read("parrot.ppm"); // Open parrot.ppm file for reading
+	Image3 image(3, 2);
+	if (!image.loadPPM("parrot.ppm")) {
+		std::cout << "Error opening file" << std::endl;
+	}
+	else
+	{
 
-	if(!read)
-		std::cout << "File could not be opened" << std::endl;
-
-	else {
-		std::cout << "Reading from file: " << std::endl;
-
-		while (true) {
-			int num;
-			std::string line;
-			std::getline(read, line);
-			std::istringstream iss(line);
-
-			iss >> num;
-			if (!iss)
-				continue;
-
-			if (!read) {
-
-				if (read.eof())
-
-					std::cout << "Finished reading file" << std::endl;
-
-				else
-
-					std::cout << "Error occurred when reading file" << std::endl;
-
-				break;
-			}
-			std::cout << num << std::endl;
-		}
 	}
 
 	return 0;
@@ -68,7 +44,8 @@ Color3::Color3(int R, int G, int B) {
 int Color3::weightedSum() const {
 	// Implement Y = 0.2126R + 0.7152G + 0.0722B
 	// Ensure values are inside the range 0 to 255
-	return 0;
+	int Y = saturate((0.2126 * r) + (0.7152 * g) + (0.0722 * b), 255);
+	return Y;
 }
 
 char Color3::asciiValue() const {
@@ -76,7 +53,7 @@ char Color3::asciiValue() const {
 	// or light to dark and then map the weightedSum() to the range
 	// 0 to 15. Please pick your own characters
 	const char values[] = " _,.;:({|/i1lQM0";
-	unsigned darkness = 0;
+	unsigned darkness = weightedSum() / 15 % 15;
 	return values[darkness];
 }
 
@@ -91,5 +68,14 @@ std::ostream& operator<<(std::ostream& ostr, const Color3& color) {
 
 std::istream& operator>>(std::istream& istr, Color3& color) {
 	// Implement your own input for a Color3
+	int r;
+	int g;
+	int b;
+	istr >> r;
+	istr >> g;
+	istr >> b;
+	color.r = saturate(r, 255);
+	color.g = saturate(g, 255);
+	color.b = saturate(b, 255);
 	return istr;
 }
