@@ -18,10 +18,7 @@ int main() {
 	if (!image.loadPPM("parrot.ppm")) {
 		std::cout << "Error opening file" << std::endl;
 	}
-	else
-	{
-
-	}
+	image.printASCII(std::cout);
 
 	return 0;
 }

@@ -57,11 +57,17 @@ bool Image3::loadPPM(const std::string& path) {
 		std::cout << "Error loading file" << std::endl;
 		return false;
 	}
-	return false;
+	return true;
 }
 
 void Image3::printASCII(std::ostream& ostr) const {
 	// TODO: Print an ASCII version of this image
+	for (size_t i = 0; i < pixels.size(); i++) {
+		ostr << pixels[i].asciiValue();
+		if (i != 0 && i + 1 % w == 0) {
+			ostr << std::endl;
+		}
+	}
 }
 
 // STREAM OPERATORS for IMAGE3 class
@@ -69,11 +75,71 @@ void Image3::printASCII(std::ostream& ostr) const {
 std::ostream& operator<<(std::ostream& ostr, const Image3& image) {
 	// TODO: Write out PPM image format to stream
 	// ASSUME FORMAT WILL BE GOOD
+	ostr << "P3\n" << image.w << ' ' << image.h << "\n255";
+
+	for (Color3 px : image.pixels) {
+		ostr << '\n' << px;
+	}
+
 	return ostr;
 }
 
 std::istream& operator>>(std::istream& istr, Image3& image) {
 	// TODO: Read in PPM image format from stream
 	// MAKE SURE FORMAT IS GOOD!!!
+	std::string line;
+	istr >> line;
+	if (line != "P3") {
+		std::cout << "PPM format is invalid" << std::endl;
+		throw;
+	}
+	image.pixels.clear();
+	bool width = false;
+	bool height = false;
+	bool colorSpace = false;
+
+	std::vector<int> rgb;
+
+	while (true) {
+		std::getline(istr, line);
+		if (!istr)
+			break;
+
+		if (line[0] == '#' || line == "")
+			continue;
+
+		std::istringstream iss(line);
+		while (iss) {
+			int num;
+			iss >> num;
+			if (!iss)
+				break;
+
+			if (!width) {
+				width = true;
+				image.w = num;
+				continue;
+			}
+
+			if (!height) {
+
+				height = true;
+				image.h = num;
+				continue;
+			}
+
+			if (!colorSpace) {
+				colorSpace = true;
+				continue;
+			}
+
+			rgb.push_back(num);
+			if (rgb.size() == 3) {
+				image.pixels.push_back(Color3(rgb[0], rgb[1], rgb[2]));
+				rgb.clear();
+			}
+		}
+	}
+
 	return istr;
 }
