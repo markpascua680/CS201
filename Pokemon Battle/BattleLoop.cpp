@@ -27,11 +27,11 @@ void getStats(Pokemon pokemon) {
     cout << string(15, '\n');
     printBoxTop();
     cout << endl;
-    cout << char(186) << ' ' << setw(10) << left << "ATK: " << right << pokemon.atk << endl;
-    cout << char(186) << ' ' << setw(10) << left << "DEF: " << right << pokemon.def << endl;
-    cout << char(186) << ' ' << setw(10) << left << "SP.ATK: " << right << pokemon.spAtk << endl;
-    cout << char(186) << ' ' << setw(10) << left << "SP.DEF: " << right << pokemon.spDef << endl;
-    cout << char(186) << ' ' << setw(10) << left << "ACC: " << right << pokemon.accuracy << endl;
+    cout << char(186) << ' ' << setw(10) << left << "ATK: " << setw(24) << pokemon.atk << char(186) << endl;
+    cout << char(186) << ' ' << setw(10) << left << "DEF: " << setw(24) << pokemon.def << char(186) << endl;
+    cout << char(186) << ' ' << setw(10) << left << "SP.ATK: " << setw(24) << pokemon.spAtk << char(186) << endl;
+    cout << char(186) << ' ' << setw(10) << left << "SP.DEF: " << setw(24) << pokemon.spDef << char(186) << endl;
+    cout << char(186) << ' ' << setw(10) << left << "ACC: " << setw(24) << pokemon.accuracy << char(186) << endl;
     printBoxBottom();
     system("PAUSE");
 }
@@ -47,9 +47,12 @@ void decideTurn(Pokemon& pPokemon1, Pokemon& cPokemon1) { // Decides who goes fi
         playerTurn();
     }
     else {
-
+        clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
+        cout << string(15, '\n');
+        Sleep(1500);
         cpuTurn();
     }
+    
 }
 
 
@@ -75,7 +78,7 @@ void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies 
     if (status == "Growth") { // Raises user's attack and special attack by 10%
         attacker.atk += attacker.atk * 0.1;
         attacker.spAtk += attacker.spAtk * 0.1;
-        cout << char(186) << ' ' << "Its attack and special attack rose!" << endl;
+        cout << char(186) << ' ' << "Its attack/special attack rose!" << endl;
     }
     else if (status == "Defense Curl") { // Raises user's defense by 10%
         attacker.def += attacker.def * 0.1;
@@ -93,6 +96,7 @@ void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies 
         defender.atk -= defender.atk * 0.1;
         cout << char(186) << ' ' << defender.name << "'s attack fell!" << endl;
     }
+    playSound(attacker, move);
     Sleep(3000);
 }
 
@@ -203,11 +207,11 @@ double damageMultiplier(Pokemon& a, Pokemon& d, int move) { // Increases/decreas
 
 double damageCalculator(Pokemon& attacker, double p, double a, double d) // Calculates damage of attacks
 {
-    double damage = 2 * attacker.level;  // d = Defender's defense/special defense stat
+    double damage = 2 * attacker.level;  
     damage /= 5;
-    damage += 2;
+    damage += 2;                         // d = Defender's defense/special defense stat
     damage *= (a / d);                   // a = Attacker's attack/special attack stat
-    damage *= p;                             // p = The attack's base power
+    damage *= p;                         // p = The attack's base power
     damage /= 50;          
     damage += 2;
     damage = round(damage);

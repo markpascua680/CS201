@@ -19,7 +19,7 @@ Attacks RazorLeaf("Razor Leaf", "Grass", "Physical", 55, 95, 25);
         // Fire Attacks
 Attacks FireFang("Fire Fang", "Fire", "Physical", 65, 95, 15);
         // Electric Attacks
-Attacks ElectroBall("Electro ball", "Electric", "Physical", 65, 100, 20);
+Attacks ElectroBall("Electro Ball", "Electric", "Physical", 65, 100, 20);
         // Rock Attacks
 Attacks Rollout("Rollout", "Rock", "Physical", 30, 90, 20);
 

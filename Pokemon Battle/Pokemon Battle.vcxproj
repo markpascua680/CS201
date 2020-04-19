@@ -145,7 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Interface.cpp" />
+    <ClCompile Include="Pokemon_Main.cpp" />
     <ClCompile Include="PokemonSelect.cpp" />
     <ClCompile Include="BattleLoop.cpp" />
     <ClCompile Include="Attacks.cpp" />
