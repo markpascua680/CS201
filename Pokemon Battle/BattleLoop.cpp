@@ -293,7 +293,6 @@ void endBattle(Pokemon& player, Pokemon& opponent) {
         cout << char(186) << ' ' << opponent.name << " fainted!\n" << char(186) << " You won!" << endl;
     }
     printBoxBottom();
-    PlaySound(TEXT("EndBattle.wav"), NULL, SND_ASYNC);
     cout << endl;
     system("PAUSE");
 }

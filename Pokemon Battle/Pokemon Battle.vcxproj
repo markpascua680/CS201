@@ -151,6 +151,7 @@
     <ClCompile Include="Attacks.cpp" />
     <ClCompile Include="PlayerInputs.cpp" />
     <ClCompile Include="Sounds.cpp" />
+    <ClCompile Include="Interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokemon.h" />
