@@ -24,7 +24,7 @@ Pokemon tempCpuPokemon;
 
 
 void getStats(Pokemon pokemon) {
-    cout << string(15, '\n');
+    cout << string(12, '\n');
     printBoxTop();
     cout << endl;
     cout << char(186) << ' ' << setw(10) << left << "ATK: " << setw(24) << pokemon.atk << char(186) << endl;
@@ -48,7 +48,7 @@ void decideTurn(Pokemon& pPokemon1, Pokemon& cPokemon1) { // Decides who goes fi
     }
     else {
         clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
-        cout << string(15, '\n');
+        cout << string(12, '\n');
         Sleep(1500);
         cpuTurn();
     }
@@ -69,7 +69,7 @@ void determineMove(Pokemon& attacker, Pokemon& defender, int move) { // Determin
 
 void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies the status to pokemon
     clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
-    cout << string(15, '\n');
+    cout << string(12, '\n');
     string status = attacker.attack[move].getName();
     attacker.attack[move].pp -= 1;
     printBoxTop();
@@ -104,7 +104,7 @@ void defensiveMove(Pokemon& attacker, Pokemon& defender, int move) { // Applies 
 
 void offensiveMove(Pokemon& attacker, Pokemon& defender, int move) {
     clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
-    cout << string(15, '\n');
+    cout << string(12, '\n');
     double power = attacker.attack[move].getPower();
     double atk;
     double def;
@@ -224,7 +224,7 @@ void playerTurn() { // User can attack or check stats of their own pokemon
     clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
     
     while(true) {
-        cout << string(15, '\n');
+        cout << string(12, '\n');
         displayOptions();
         if (selectOption() == 0) {
             clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
@@ -260,7 +260,7 @@ random_device r;
 uniform_int_distribution<int> random(0, 3); // Opponent uses a random ability
 void cpuTurn() { // Computer's turn to attack
     clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
-    cout << string(15, '\n');
+    cout << string(12, '\n');
 
     cout << "Opponent's "; 
     determineMove(tempCpuPokemon, tempPlayerPokemon, random(r));     // What kind of move is used is determined and then passed to 
@@ -283,7 +283,7 @@ bool isFainted(Pokemon& player, Pokemon& opponent) {
 
 void endBattle(Pokemon& player, Pokemon& opponent) {
     clearScreen(pPokemon, tempPlayerPokemon, cPokemon, tempCpuPokemon);
-    cout << string(15, '\n');
+    cout << string(12, '\n');
     printBoxTop();
     cout << endl;
     if (player.hp == 0) {
@@ -294,5 +294,6 @@ void endBattle(Pokemon& player, Pokemon& opponent) {
     }
     printBoxBottom();
     cout << endl;
+    PlaySound(TEXT("EndBattle.wav"), NULL, SND_ASYNC);
     system("PAUSE");
 }

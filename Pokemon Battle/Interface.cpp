@@ -51,7 +51,7 @@ void displayOptions() { // Displays player's options when it's their turn
 
 
 void displayAttacks(Pokemon& p) { // Displays player's attacks
-    cout << string(15, '\n');
+    cout << string(12, '\n');
     printBoxTop();
     cout << endl;
     for (int i = 0; i < 4; i++) {
@@ -64,8 +64,17 @@ void displayAttacks(Pokemon& p) { // Displays player's attacks
 
 
 
-void displayHealthBar(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy) { // Displays pokemons' health bar
-    // Opponent's health
+string displayHealthBar(int remainingHP, int hp) { // Displays pokemons' health bar
+    string healthBar = "";
+
+    double segment = hp / 10; // Divides total hp by 10
+
+    int bars = (int)round(remainingHP / segment); // Divides remaining hp by # of segments; decreases # of segments
+    std::vector<char> cHP(bars, char(254));
+    for (auto x : cHP) {
+        healthBar += x;
+    }
+    return healthBar;
 }
 
 
@@ -73,12 +82,14 @@ void displayHealthBar(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy) { 
 void displayHealth(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy) { // Displays pokemons' remaining health and base health
     // Opponent's health
     cout << setw(23) << right << char(205) << char(187) << endl;
-    cout << setw(12) << right << c.name << " Lvl. " << c.level << endl;
+    cout << setw(12) << c.name << " Lvl. " << c.level << endl;
+    cout << setw(6) << right << '[' << setw(10) << left << displayHealthBar(cCopy.hp, c.hp) << ']' << endl;
     cout << setw(12) << right << cCopy.hp << '/' << c.hp << endl;
     cout << char(200) << char(205) << endl;
     // Player's health
     cout << setw(111) << right << char(205) << char(187) << endl;
     cout << setw(100) << right << p.name << " Lvl. " << p.level << endl;
+    cout << setw(95) << right << '[' << setw(10) << left << displayHealthBar(pCopy.hp, p.hp) << ']' << endl;
     cout << setw(100) << right << pCopy.hp << '/' << p.hp << endl;
     cout << setw(90) << right << char(200) << char(205) << endl;
 }

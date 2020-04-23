@@ -43,7 +43,5 @@ _,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.
 
     decideTurn(pPokemon, cPokemon); // Decides who goes first and begins battle loop in BattleLoop.cpp
 
-    PlaySound(TEXT("EndBattle.wav"), NULL, SND_ASYNC);
-
     return 0;
 }
