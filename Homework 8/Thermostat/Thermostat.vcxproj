@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="environment.cpp" />
+    <ClCompile Include="agent.cpp" />
     <ClCompile Include="thermostat.cpp" />
   </ItemGroup>
   <ItemGroup>

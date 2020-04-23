@@ -16,6 +16,8 @@ public:
 
 	int getTemp(); // Returns the current temp
 
+	bool toggleHeater(bool toggle); // Turns heater on/off
+
 	bool getHeaterState(); // Returns 1/0 if heater is on/off
 
 private:

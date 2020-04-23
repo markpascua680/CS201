@@ -11,9 +11,11 @@
 
 int main() {
     Environment room;
+    Agent thermostat;
 
-    std::cout << "CURRENT TEMP IS: " << room.getTemp() << std::endl;
+    std::cout << "CURRENT TEMP IS: " << thermostat.perceive(room) << std::endl;
     std::cout << "Heater is on: " << room.getHeaterState() << std::endl;
+    thermostat.think(room);
 
     return 0;
 }

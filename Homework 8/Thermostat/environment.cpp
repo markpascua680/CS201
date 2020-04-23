@@ -18,6 +18,10 @@ int Environment::getTemp() { // Returns the current temp
     return _temp;
 }
 
+bool Environment::toggleHeater(bool toggle) {
+    return _heater = toggle;
+}
+
 bool Environment::getHeaterState() { // Returns 1/0 if heater is on/off
     return _heater;
 }

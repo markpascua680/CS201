@@ -6,11 +6,17 @@
 
 class Agent {
 
-	int perceive();
+public:
 
-	void think();
+	Agent() {
 
-	void act();
+	}
+
+	int perceive(class Environment& room); // Ask Environment for current temperature
+
+	void think(class Environment& room); // Determine the action that the agent should take
+
+	void act(class Environment& room); // Tells Environment to turn heater on/off
 
 };
 
