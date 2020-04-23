@@ -17,8 +17,8 @@ void Agent::think(class Environment& room) { // Determine the action that the ag
 }
 
 void Agent::act(class Environment& room) { // Tells Environment to turn heater on/off
-    if (room.getTemp() < 61)      // Turns heater on if temp is too low
+    if (room.getTemp() < desiredTempLow)      // Turns heater on if temp is too low
         room.toggleHeater(true);
-    else if (room.getTemp() > 72) // Turns heater off if temp is too high
+    else if (room.getTemp() > desiredTempHigh) // Turns heater off if temp is too high
         room.toggleHeater(false);
 }

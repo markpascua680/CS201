@@ -15,8 +15,8 @@ class Agent {
 
 public:
 
-	int desiredTempLow = 0;
-	int desiredTempHigh = 0;
+	int desiredTempLow = 60;
+	int desiredTempHigh = 75;
 
 	Agent() {
 		

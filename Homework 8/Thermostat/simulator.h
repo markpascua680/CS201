@@ -10,18 +10,21 @@
 #define SIMULATOR_H
 
 #include "agent.h"
+#include "environment.h"
 
 class Simulator {
 
 public:
 
 	bool runSim = true;
+	int iterationCounter = 1;
 
 	Environment room;
 	Agent thermostat;
 
 	Simulator() {
-		
+		room;
+		thermostat;
 	}
 
 	void run(); // Runs the simulator loop

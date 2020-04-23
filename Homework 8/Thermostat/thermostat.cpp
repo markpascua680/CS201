@@ -13,8 +13,12 @@
 int main() {
 
     Simulator sim;
-
     sim.run();
+   /*
+    Environment room;
+    Agent thermostat;
+    std::cout << thermostat.perceive(room);
+   */
 
 
     return 0;
