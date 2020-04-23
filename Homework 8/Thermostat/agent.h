@@ -1,3 +1,10 @@
+/* agent.h
+   Jay-Mark Pascua
+   CS 201
+   04/22/2020
+   Process percepts from environment and decides what actions to take to change environment
+*/
+
 #pragma once
 #ifndef AGENT_H
 #define AGENT_H
@@ -12,7 +19,7 @@ public:
 	int desiredTempHigh = 0;
 
 	Agent() {
-
+		
 	}
 
 	int perceive(class Environment& room); // Ask Environment for current temperature

@@ -1,3 +1,10 @@
+/* environment.h
+   Jay-Mark Pascua
+   CS 201
+   04/22/2020
+   Simulates environment
+*/
+
 #pragma once
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H

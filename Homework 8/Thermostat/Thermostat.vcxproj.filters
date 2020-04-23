@@ -24,6 +24,9 @@
     <ClCompile Include="agent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="simulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="environment.h">

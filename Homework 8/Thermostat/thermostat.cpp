@@ -6,16 +6,15 @@
 */
 
 #include <iostream>
-#include "environment.h"
 #include "agent.h"
+#include "environment.h"
+#include "simulator.h"
 
 int main() {
-    Environment room;
-    Agent thermostat;
 
-    std::cout << "CURRENT TEMP IS: " << thermostat.perceive(room) << std::endl;
-    std::cout << "Heater is on: " << room.getHeaterState() << std::endl;
-    thermostat.think(room);
+    Simulator sim;
+
+    sim.run();
 
 
     return 0;

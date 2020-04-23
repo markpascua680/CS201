@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="environment.cpp" />
     <ClCompile Include="agent.cpp" />
+    <ClCompile Include="simulator.cpp" />
     <ClCompile Include="thermostat.cpp" />
   </ItemGroup>
   <ItemGroup>

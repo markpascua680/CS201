@@ -4,8 +4,8 @@
    04/22/2020
    Process percepts from environment and decides what actions to take to change environment
 */
+
 #include <iostream>
-#include "environment.h"
 #include "agent.h"
 
 int Agent::perceive(class Environment& room) { // Ask Environment for current temperature
