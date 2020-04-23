@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "environment.h"
+#include "agent.h"
 
 int main() {
     Environment room;

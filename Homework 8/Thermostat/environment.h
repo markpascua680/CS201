@@ -2,6 +2,8 @@
 #ifndef ENVIRONMENT_H
 #define ENVIRONMENT_H
 
+#include "agent.h"
+
 class Environment {
 
 public:
