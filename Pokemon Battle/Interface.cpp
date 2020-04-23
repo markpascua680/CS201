@@ -5,11 +5,12 @@
    Main outputs seen by user; user interface
 */
 
+#include "Pokemon.h"
+
 void clearScreen(Pokemon& p, Pokemon& tempP, Pokemon& c, Pokemon& tempC) {
     system("CLS");
     displayHealth(p, tempP, c, tempC);
 }
-
 
 
 
@@ -63,7 +64,13 @@ void displayAttacks(Pokemon& p) { // Displays player's attacks
 
 
 
-void displayHealth(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy) { // Displays pokemon's remaining health and base health
+void displayHealthBar(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy) { // Displays pokemons' health bar
+    // Opponent's health
+}
+
+
+
+void displayHealth(Pokemon& p, Pokemon& pCopy, Pokemon& c, Pokemon& cCopy) { // Displays pokemons' remaining health and base health
     // Opponent's health
     cout << setw(23) << right << char(205) << char(187) << endl;
     cout << setw(12) << right << c.name << " Lvl. " << c.level << endl;
