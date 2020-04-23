@@ -8,6 +8,9 @@ class Agent {
 
 public:
 
+	int desiredTempLow = 0;
+	int desiredTempHigh = 0;
+
 	Agent() {
 
 	}

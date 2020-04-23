@@ -17,5 +17,6 @@ int main() {
     std::cout << "Heater is on: " << room.getHeaterState() << std::endl;
     thermostat.think(room);
 
+
     return 0;
 }
