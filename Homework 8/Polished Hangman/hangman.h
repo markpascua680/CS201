@@ -52,7 +52,15 @@ bool hasBeenUsed(char& guess) { // Tells player their guess has been used before
 
 
 bool gameOver() { // Stops game
-
+    if (answer == blanks) {
+        std::cout << "You guessed it! The answer is " << answer << std::endl;
+        return true;
+    }
+    else if (attempts == 0) {
+        std::cout << "You ran out of attempts! The answer was " << answer << std::endl;
+        return true;
+    }
+    return false;
 }
 
 
