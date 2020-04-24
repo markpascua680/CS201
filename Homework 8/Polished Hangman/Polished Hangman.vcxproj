@@ -139,7 +139,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="hangman_main.cpp" />
-    <ClCompile Include="hangman.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hangman.h" />

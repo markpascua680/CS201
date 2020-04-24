@@ -5,7 +5,11 @@
    Hangman header file
 */
 
-#include <map>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <iterator>
+#include <Windows.h>
 
 #pragma once
 #ifndef HANGMAN_H
@@ -13,28 +17,48 @@
 
 
 std::string answer = "computer"; // Hangman answer
-std::map<char, char> blanks { // Displays blank spaces; will reveal letter if guessed correctly
-    {'c', '_'},
-    {'o', '_'},
-    {'m', '_'},
-    {'p', '_'},
-    {'u', '_'},
-    {'t', '_'},
-    {'e', '_'},
-    {'r', '_'}
-};
-int attempts = 10; // Attempts to guess
+std::string blanks = "________"; // Holds the letters that are revealed/unrevealed
+std::vector<char> usedLetters = {};
+int attempts = 10;
 
-char guess(); // Player guesses a letter
 
-void checkGuess(char& guess); // Check if letter guessed is correct/incorrect/used before
+void incorrect(char& guess) { // Tells player their guess is incorrect
+    std::cout << "Incorrect!" << std::endl;
+}
 
-void correct(char& guess); // Reveals letter according to blank spaces
 
-void incorrect(char& guess); // Tells player their guess is incorrect
+void correct(char& guess) { // Reveals letter according to blank spaces
+    int found = answer.find(guess);
+    if (found != -1) {
+        blanks[found] = guess;
+        std::cout << "Correct!" << std::endl;
+    }
+    else {
+        incorrect(guess);
+    }
+}
 
-void hasBeenUsed(char& guess); // Tells player their guess has been used before
 
-bool gameOver(); // Stops game
+bool hasBeenUsed(char& guess) { // Tells player their guess has been used before
+    for (auto x : usedLetters) {
+        if (guess == x) {
+            std::cout << "That letter has already been guessed!" << std::endl;
+            usedLetters.pop_back(); // Removes repeated letter
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool gameOver() { // Stops game
+
+}
+
+
+std::string printBlanks() { // Prints the letters that are revealed/unrevealed
+
+    return blanks;
+}
 
 #endif 
