@@ -35,65 +35,28 @@ int main() {
     if (!file) { // Error message if unable to write to file
         std::cout << "Error writing in file" << std::endl;
     }
-    
-    std::vector<int> integers = numbers();
-    int seed = 5;
-    std::shuffle(integers.begin(), integers.end(), std::default_random_engine(5));
 
-    printIntegersToFile(integers, file); 
+    std::ifstream file2("Hello.txt");
+    if (!file)
+        std::cout << "Error" << std::endl;
 
-    /*
-    std::ifstream read("Hello.txt");
+    else {
 
-    if (!read) { // If file can't be opened
-        std::cout << "Cannot open file" << std::endl;
-    }
-    else
-    {
-        std::cout << "Reading from file:" << std::endl;
+        while (true) {
+            std::string word;
 
-        while (true) { // Reads the file
-            std::string line;
-            std::getline(read, line);
-            if (!read) {
-                if (read.eof()) {
-                    std::cout << "Finished reading file" << std::endl;
+            if (!file2) {
+
+                if (file2.eof()) {
+                    std::cout << "End of file" << std::endl;
                 }
                 else
-                {
-                    std::cout << "An error ocurred, GG" << std::endl;
-                }
+                    std::cout << "Error" << std::endl;
                 break;
             }
-            std::cout << line << std::endl;
+            file2 >> word;
+            std::cout << word << std::endl;
         }
     }
-    */
     return 0;
-}
-
-std::vector<int> numbers() {
-
-    std::ofstream file("Hello.txt");
-
-    std::vector<int> integers;
-
-    for (int i = 1; i <= 100; i++) { 
-        file << std::setw(4) << i;
-        if (i % 10 == 0) {
-            file << '\n';
-        }
-        integers.push_back(i);
-    }
-    return integers;
-}
-
-void printIntegersToFile(const std::vector<int>& integers, std::ofstream& output) {
-
-    for (int i = 1; i <= 100; i++) {
-        output << std::setw(4) << integers[i-1];
-        if (i % 10 == 0) {
-            output << '\n';
-        }
-    }
 }
